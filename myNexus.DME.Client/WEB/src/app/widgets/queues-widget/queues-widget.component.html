@@ -1,0 +1,60 @@
+<sa-widget *ngIf="showMe" name="queues-widget" color="blueDark" colorbutton editbutton deletebutton sortable>
+    <header>
+        <span class="widget-icon"><i class="fa fa-list"></i></span>
+        <h2>Queues</h2>
+    </header>
+    <div class="widget-body">
+            
+            <p-dataTable  [value]="data"  [globalFilter]="gb" [rowStyleClass]="rowStyleClass"  #dt selectionMode="single" (onRowSelect)="onRowSelect($event)">
+              
+              <p-column field="AuthCreationDate" header="Auth Create Date" styleClass="column-big" > 
+                      <ng-template let-col let-auth="rowData" pTemplate="body">
+                          <span>{{auth[col.field] | date: 'short'}}</span>
+                      </ng-template>              
+              </p-column>
+              <p-column field="MemberID" header="Member ID" [sortable]="true"  ></p-column>
+            
+              <p-column field="MemberName" header="Name" [sortable]="true" >
+                <ng-template let-row="rowData" pTemplate type="body">                
+                   {{row.IsLocked == true ? "*" + row.MemberName : row.MemberName}}
+                </ng-template>
+              </p-column>
+              <p-column field="AuthNumber" header="Auth No." [sortable]="true" ></p-column>
+              
+              <p-column field="State" header="" [filter]="true"  filterMatchMode="in">
+                  <ng-template pTemplate="filter" let-col>
+                      <p-multiSelect [options]="states" defaultLabel="States" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-multiSelect>
+                  </ng-template>
+              </p-column>
+              <p-column field="DMEProvider" header=""  [filter]="true" filterMatchMode="in" styleClass="column-big">
+                  <ng-template pTemplate="filter" let-col>
+                      <p-multiSelect [options]="providers" defaultLabel="DME Providers" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-multiSelect>
+                  </ng-template>
+              </p-column>
+              <p-column field="HandledBy" header="Handled By" [sortable]="true"  ></p-column>
+              <p-column field="Urgency" header="" [filter]="true"  filterMatchMode="in">
+                  <ng-template pTemplate="filter" let-col>
+                      <p-multiSelect [options]="urgencies" defaultLabel="Urgencies" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-multiSelect>
+                  </ng-template>
+              </p-column>
+              <p-column field="Queue" header="" [filter]="true"  filterMatchMode="in">
+                  <ng-template pTemplate="filter" let-col>
+                      <p-multiSelect [options]="queues" defaultLabel="Queues" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-multiSelect>
+                  </ng-template>
+              </p-column>
+              <p-column field="AuthStatus" header="" [filter]="true" filterMatchMode="in">
+                  <ng-template pTemplate="filter" let-col>
+                      <p-multiSelect [options]="authStatuses" defaultLabel="Statuses" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-multiSelect>
+                  </ng-template>
+              </p-column>
+              <p-column field="TotalTime" header="Time" styleClass="column-small" [sortable]="true" ></p-column>
+              <p-column field="FollowUpOne" header="Follow Up" styleClass="center" >            
+                  <ng-template let-row="rowData" let-index="rowIndex" let-col pTemplate="body">                               
+                      <input type="checkbox" [(ngModel)]="row[col.field][0]"/>
+                      <input type="checkbox" [(ngModel)]="row[col.field][1]"/>
+                      <input type="checkbox" [(ngModel)]="row[col.field][2]"/>               
+                  </ng-template>
+              </p-column>    
+            </p-dataTable>            
+    </div>
+</sa-widget>

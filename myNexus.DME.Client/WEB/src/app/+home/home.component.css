@@ -1,0 +1,22 @@
+.panel > .panel-heading {
+    background-image: none;
+    background-color: #e3e4e5;
+    color: rgb(60, 137, 185); 
+    border-bottom: 1px solid #D2D4D6;
+    font-weight: bolder;
+}
+
+.panel{
+    border: 1px solid #D2D4D6;
+}
+
+.right-nav-header{
+    font-weight: bold;
+    color: #686868;
+}
+
+.right-nav-link a{   
+    color: #A19F9F;
+}
+
+

@@ -1,0 +1,5 @@
+<select multiple class="smart-duallistbox">
+    <option *ngFor="let item of items" [selected]="item.selected" [value]="item.key">
+        {{item.value}}
+    </option>
+</select>

@@ -1,0 +1,1089 @@
+<div id="content">
+	<form>
+		<!--  modal for Requests  -->
+		<div class="modal fade" bsModal #parentModalRequests="bs-modal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+
+
+					<div class="modal-header">
+						<span style="font-size: 20px; color: #1e5abc; font-weight: normal;">
+						<i class="fa fa-info-circle fg-primary"></i> Requests
+					</span>
+						<button type="button" class="close pull-right" aria-label="Close" (click)="parentModalRequests.hide()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					</div>
+
+					<div class="modal-body">
+						<div class="container-fluid">
+							<div class="row pull-left requestStatusHeading requestStatusHeadingLeft">
+								Request: <i class="fa fa-lock requestStatusHeadingIcon"></i>
+							</div>
+							<div class="row pull-right requestStatusHeading requestStatusHeadingRight">
+								Status: <i class="fa fa-lock requestStatusHeadingIcon"></i>
+							</div>
+						</div>
+
+						<div class="">
+							<div class="widget-body fuelux">
+								<div class="wizard" #wizard>
+									<fuel-ux-wizard (complete)="onWizardComplete($event)" #wizardFuel>
+										<div class="steps-container">
+											<ul class="steps">
+												<li data-step="1" class="active stepLi" data-name="general">
+													<span class="badge badge-info stepSpan">1</span>General<i class="fa fa-angle-right rightStepIcon"></i>
+												</li>
+												<li data-step="2">
+													<span class="badge">2</span>Demographics<i class="fa fa-angle-right rightStepIcon"></i>
+												</li>
+												<li data-step="3">
+													<span class="badge">3</span>Diagnosis<i class="fa fa-angle-right rightStepIcon"></i>
+												</li>
+												<li data-step="4">
+													<span class="badge">4</span>Referral Source<i class="fa fa-angle-right rightStepIcon"></i>
+												</li>
+												<li data-step="5">
+													<span class="badge">5</span>Ordering Physician<i class="fa fa-angle-right rightStepIcon"></i>
+												</li>
+												<li data-step="6">
+													<span class="badge">6</span>DME Provider<i class="fa fa-angle-right rightStepIcon"></i>
+												</li>
+												<li data-step="7">
+													<span class="badge">7</span>Documents<i class="fa fa-angle-right rightStepIcon"></i>
+												</li>
+												<li data-step="8">
+													<span class="badge">8</span>Product Selection<i class="fa fa-stop-circle-o rightStepIcon"></i>
+												</li>
+
+											</ul>
+										</div>
+										<div class="actions stepWidgetButtonsDiv">
+											<button type="button" class="btn btn-sm btn-primary btn-prev">
+												<i class="fa fa-arrow-left"></i>Prev
+											</button>
+											<button type="button" class="btn btn-sm btn-success btn-next" data-last="Finish">
+												Next<i class="fa fa-arrow-right"></i>
+											</button>
+										</div>
+										<br><br>
+										<div class="step-content">
+											<form class="form-horizontal">
+												<div class="step-pane active" data-step="1">
+													<!-- General -->
+													<div class="form-group">
+														<!-- General Step -->
+														<div class="container-fluid generalTableDiv ">
+															<table class="generalTable">
+																<tr>
+																	<td class="requiredFieldIndicatorFa"><i class="fa fa-asterisk"></i></td>
+																	<td><label> Start Date:</label></td>
+																	<td>
+																		<p-calendar [(ngModel)]="generalStartDate" [showIcon]="true" name="generalStartDate"></p-calendar>
+																	</td>
+																	<td></td>
+																	<td>Time:</td>
+																	<td>
+																		<p-calendar [(ngModel)]="generalStartDate" timeOnly="true" showTime="showTime" hourFormat="12" name="generalStartDateTime"></p-calendar>
+																	</td>
+																	<td style="width: 75px;"></td>
+																	<td>Effective Dates:</td>
+																	<td colspan="4">
+																		<p-calendar [(ngModel)]="generalEffectiveDateRange" selectionMode="range" readonlyInput="true" name="generalEffectiveDateRange"></p-calendar>
+																	</td>
+																</tr>
+																<tr>
+																	<td class="requiredFieldIndicatorFa"><i class="fa fa-asterisk"></i></td>
+																	<td>Urgency:</td>
+																	<td><input id="input" type="text" size="24" pInputText [(ngModel)]="generalUrgency" name="generalUrgency"> </td>
+																	<td><i class="fa fa-info-circle" style="color: blue;"></i></td>
+																	<td></td>
+																	<td></td>
+																	<td></td>
+																	<td>Member Height:</td>
+																	<td><input id="input" type="text" size="5" pInputText [(ngModel)]="generalMemberHeightFeet" name="generalMemberHeightFeet"></td>
+																	<td>ft</td>
+																	<td><input id="input" type="text" size="5" pInputText [(ngModel)]="generalMemberMemberHeightInches" name="generalMemberMemberHeightInches"></td>
+																	<td>in</td>
+																</tr>
+																<tr>
+																	<td></td>
+																	<td></td>
+																	<td></td>
+																	<td></td>
+																	<td></td>
+																	<td></td>
+																	<td></td>
+																	<td>Member Weight:</td>
+																	<td><input id="input" type="text" size="5" pInputText [(ngModel)]="generalMemberWeight" name="generalMemberWeight"></td>
+																	<td>lbs</td>
+																	<td></td>
+																	<td></td>
+																</tr>
+															</table>
+														</div>
+														<div class="container-fluid generalSpecialInstructionsDiv">
+															<div class="row">
+																<div class="col-2">Special Instruction:</div>
+																<div class="col-10"><textarea [(ngModel)]="generalSpecialInstructions" [rows]="5" [cols]="140" pInputTextarea autoResize="autoResize"
+																	 name="generalSpecialInstructions"></textarea></div>
+															</div>
+														</div>
+													</div>
+													<!-- end form group-->
+
+												</div>
+												<div class="step-pane" data-step="2">
+													<!-- Demographics -->
+													<div class="container-fluid demographicsDiv">
+														<div class="row form-group">
+															<div class="container-fluid col-xs-6 ">
+																<div class="row authDetail-labelTextbox">
+																	<span class="labelLarge-requests col-xs-12">Physical Address:
+																	&nbsp;<a href="#" onClick="return false;"><i class="fa fa-pencil" aria-hidden="true"></i></a></span>
+																	<hr />
+																</div>
+
+																<div style="margin-left: 4px;">
+																	<table class="generalTable">
+																		<tr>
+																			<td>
+																				<label>Address 1:</label>
+																			</td>
+																			<td colspan="3">
+																				<!--    <span>{{demographicsData.paAddress1}}</span> -->
+																				<input id="input" type="text" size="24" pInputText [(ngModel)]="demographicsPaAddress1" name="demographicsPaAddress1">
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<label>Address 2:</label>
+																			</td>
+																			<td colspan="3">
+																				<!-- <span>{{demographicsData.paAddress2}}</span> -->
+																				<input id="input" type="text" size="24" pInputText [(ngModel)]="demographicsPaAddress2" name="demographicsPaAddress2">
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<label>City:</label>
+																			</td>
+																			<td>
+																				<!-- <span>{{demographicsData.paCity}}</span> -->
+																				<input id="input" type="text" size="24" pInputText [(ngModel)]="demographicsPaCity" name="demographicsPaCity">
+																			</td>
+																			<td>
+																				<label>State:</label>
+																			</td>
+																			<td>
+																				<!--   <span>{{demographicsData.paState}}</span> -->
+																				<input id="input" type="text" size="10" pInputText [(ngModel)]="demographicsPaState" name="demographicsPaState">
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<label>County:</label>
+																			</td>
+																			<td>
+																				<!-- <span>{{demographicsData.paCounty}}</span> -->
+																				<input id="input" type="text" size="24" pInputText [(ngModel)]="demographicsPaCounty" name="demographicsPaCounty">
+																			</td>
+																			<td>
+																				<label>Zip:</label>
+																			</td>
+																			<td>
+																				<!-- <span>{{demographicsData.paZip}}</span> -->
+																				<p-inputMask mask="99999?-9999" [(ngModel)]="demographicsPaZip" placeholder="" name="demographicsPaZip" size="10"></p-inputMask>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>&nbsp;</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<label class="label-authDetails">Phone:</label>
+																			</td>
+																			<td>
+																				<!-- <span>{{demographicsData.phone}}</span> -->
+																				<p-inputMask mask="(999) 999-9999" [(ngModel)]="demographicsPhone" placeholder="" name="demographicsPhone"></p-inputMask>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<label class="label-authDetails">Alternate Phone:</label>
+																			</td>
+																			<td>
+																				<!-- <span>{{demographicsData.alternatePhone}}</span> -->
+																				<p-inputMask mask="(999) 999-9999" [(ngModel)]="demographicsAlternatePhone" placeholder="" name="demographicsAlternatePhone"></p-inputMask>
+																			</td>
+																		</tr>
+																	</table>
+																</div>
+															</div>
+
+															<div class="container-fluid  col-xs-6">
+																<div class="row authDetail-labelTextbox">
+																	<span class="labelLarge-requests col-xs-12">Mailing Address:</span>
+																	<hr />
+																</div>
+																<div style="margin-left: 4px;">
+																	<table class="generalTable">
+																		<tr>
+																			<td>
+																				<label>Address 1:</label>
+																			</td>
+																			<td colspan="3">
+																				<!--  <span>{{demographicsData.maAddress1}}</span> -->
+																				<input id="input" type="text" size="24" [readonly]="true" pInputText [(ngModel)]="demographicsMaAddress1" name="demographicsMaAddress1">
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<label>Address 2:</label>
+																			</td>
+																			<td colspan="3">
+																				<!--  <span>{{demographicsData.maAddress2}}</span> -->
+																				<input id="input" type="text" size="24" [readonly]="true" pInputText [(ngModel)]="demographicsMaAddress2" name="demographicsMaAddress2">
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<label>City:</label>
+																			</td>
+																			<td>
+																				<!-- <span>{{demographicsData.maCity}}</span> -->
+																				<input id="input" type="text" size="24" [readonly]="true" pInputText [(ngModel)]="demographicsMaCity" name="demographicsMaCity">
+																			</td>
+																			<td>
+																				<label>State:</label>
+																			</td>
+																			<td>
+																				<!--  <span>{{demographicsData.maState}}</span> -->
+																				<input id="input" type="text" size="10" [readonly]="true" pInputText [(ngModel)]="demographicsMaState" name="demographicsMaState">
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<label>County:</label>
+																			</td>
+																			<td>
+																				<!--  <span>{{demographicsData.maCounty}}</span> -->
+																				<input id="input" type="text" size="24" [readonly]="true" pInputText [(ngModel)]="demographicsMaCounty" name="demographicsMaCounty">
+																			</td>
+																			<td>
+																				<label>Zip:</label>
+																			</td>
+																			<td>
+																				<!-- <span>{{demographicsData.maZip}}</span> -->
+																				<p-inputMask mask="99999?-9999" [(ngModel)]="demographicsMaZip" [readonly]="true" placeholder="" name="demographicsMaZip"
+																				 size="10"></p-inputMask>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>&nbsp;</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<label class="label-authDetails">Alternate Contact:</label>
+																			</td>
+																			<td>
+																				<!--   <span>{{demographicsData.alternateContact}}</span> -->
+																				<input id="input" type="text" size="24" [readonly]="true" pInputText [(ngModel)]="demographicsMaAlternateContact" name="demographicsMaAlternateContact">
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<label class="label-authDetails">Alternate Contact Phone:</label>
+																			</td>
+																			<td>
+																				<!--  <span>{{demographicsData.alternateContactPhone}}</span> -->
+																				<p-inputMask mask="(999) 999-9999" size="24" [readonly]="true" [(ngModel)]="alternateContactPhone" placeholder="" name="alternateContactPhone"></p-inputMask>
+																			</td>
+																		</tr>
+																	</table>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="step-pane" data-step="3">
+													<!-- Diagnosis -->
+													<div class="form-group container-fluid diagnosisDiv">
+														<div class="row ">
+															<div class="container-fluid col-xs-12 ">
+																<div style="margin-left: 4px;" class="form-group">
+																	<table class="diagnosisModalTable">
+																		<tr>
+																			<td>
+																				<span>1st Diagnosis:</span>
+																			</td>
+																			<td>
+																				<p-autoComplete [(ngModel)]="diag1" [suggestions]="filteredDiag1List" (completeMethod)="filterDiagnosisSingle($event)" 
+																					field="description" [size]="120" placeholder="Diagnosis" [minLength]="4" [ngModelOptions]="{standalone: true}" class="liTypeAheadStyle">
+																				    <ng-template let-d pTemplate="item"  class="ui-helper-clearfix" >
+																						<div class="ui-helper-clearfix" style="width: 300px !important;">
+																							<div class="ui-helper-clearfix liTypeAheadStyle" >{{d.description}}</div>																		
+																						</div>
+																					</ng-template>																				
+																				</p-autoComplete>
+
+																			</td>
+																			<td class="requiredFieldIndicatorFa"><i class="fa fa-asterisk"></i></td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<span>2nd Diagnosis:</span>
+																			</td>
+																			<td>
+																				<select class="form-control">
+																				<option value="1">G12.0 Infantile spinal muscular atrophy, type 1 </option>
+																				<option value="2">G12.1 Other inherited spinal muscular atrophy </option>
+																				<option value="3">G12.8 Other spional muscular atrophies and related syndromes </option>
+																				<option value="4">G12.9 Spinal muscular atrophy, unspecified </option>
+																			</select>
+																			</td>
+																			<td></td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<span>3rd Diagnosis:</span>
+																			</td>
+																			<td>
+																				<select class="form-control">
+																				<option value="1">G12.0 Infantile spinal muscular atrophy, type 1 </option>
+																				<option value="2">G12.1 Other inherited spinal muscular atrophy </option>
+																				<option value="3">G12.8 Other spional muscular atrophies and related syndromes </option>
+																				<option value="4">G12.9 Spinal muscular atrophy, unspecified </option>
+																			</select>
+																			</td>
+																			<td></td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<span>4th Diagnosis:</span>
+																			</td>
+																			<td>
+																				<select class="form-control">
+																				<option value="1">G12.0 Infantile spinal muscular atrophy, type 1 </option>
+																				<option value="2">G12.1 Other inherited spinal muscular atrophy </option>
+																				<option value="3">G12.8 Other spional muscular atrophies and related syndromes </option>
+																				<option value="4">G12.9 Spinal muscular atrophy, unspecified </option>
+																			</select>
+																			</td>
+																			<td></td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<span>5th Diagnosis:</span>
+																			</td>
+																			<td>
+																				<select class="form-control">
+																				<option value="1">G12.0 Infantile spinal muscular atrophy, type 1 </option>
+																				<option value="2">G12.1 Other inherited spinal muscular atrophy </option>
+																				<option value="3">G12.8 Other spional muscular atrophies and related syndromes </option>
+																				<option value="4">G12.9 Spinal muscular atrophy, unspecified </option>
+																			</select>
+																			</td>
+																			<td></td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<span>6th Diagnosis:</span>
+																			</td>
+																			<td>
+																				<select class="form-control">
+																				<option value="1">G12.0 Infantile spinal muscular atrophy, type 1 </option>
+																				<option value="2">G12.1 Other inherited spinal muscular atrophy </option>
+																				<option value="3">G12.8 Other spional muscular atrophies and related syndromes </option>
+																				<option value="4">G12.9 Spinal muscular atrophy, unspecified </option>
+																			</select>
+																			</td>
+																			<td></td>
+																		</tr>
+																	</table>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="step-pane" data-step="4">
+													<!-- Referral Source -->
+													<div class="container-fluid referralSourceDiv">
+														<div class="row form-group">
+															<table class="referralSourceModalTable">
+																<tr>
+																	<td>
+																		<span>NPI:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--  <span>{{referralSourceData.npi}}</span> -->
+																	</td>
+																	<td>
+																		<i class="fa fa-asterisk requiredFieldIndicatorFa"></i>
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>Referral Type:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!-- <span>{{referralSourceData.referralType}}</span> -->
+																	</td>
+																	<td>
+																		<i class="fa fa-asterisk requiredFieldIndicatorFa"></i>
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>Business Name:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--  <span>{{referralSourceData.businessName}}</span> -->
+																	</td>
+
+																</tr>
+																<tr>
+																	<td>
+																		<span>Address 1:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--  <span>{{referralSourceData.address1}}</span> -->
+																	</td>
+
+																</tr>
+																<tr>
+																	<td>
+																		<span>Address 2:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!-- <span>{{referralSourceData.Address2}}</span> -->
+																	</td>
+
+																</tr>
+																<tr>
+																	<td>
+																		<span>City:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!-- <span>{{referralSourceData.city}}</span> -->
+																	</td>
+																	<td></td>
+																	<td>
+																		<span>State:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--     <span>{{referralSourceData.state}}</span> -->
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>County:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--  <span>{{referralSourceData.county}}</span> -->
+																	</td>
+																	<td></td>
+																	<td>
+																		<span>Zip:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--  <span>{{referralSourceData.zip}}</span> -->
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>Phone:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--  <span>{{referralSourceData.phone}}</span> -->
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>Fax:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--    <span>{{referralSourceData.fax}}</span> -->
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>Contact Name:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--   <span>{{referralSourceData.contactName}}</span> -->
+																	</td>
+																</tr>
+															</table>
+
+														</div>
+													</div>
+												</div>
+												<div class="step-pane" data-step="5">
+													<!-- Ordering Physician -->
+													<!-- Ordering Physician -->
+													<div class="form-group container-fluid referralSourceDiv">
+														<div class="row">
+															<table class="referralSourceModalTable">
+																<tr>
+																	<td>
+																		<span>NPI:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--  <span>{{referralSourceData.npi}}</span> -->
+																	</td>
+																	<td>
+																		<i class="fa fa-asterisk requiredFieldIndicatorFa"></i>
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>Physician:</span>
+																	</td>
+																	<td>
+																		<table>
+																			<tr>
+																				<td>First Name</td>
+																				<td>
+																					<input type="text" class="form-control" width="20" />
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>Last Name</td>
+																				<td>
+																					<input type="text" class="form-control" width="20" />
+																				</td>
+																			</tr>
+
+																		</table>
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>Business Name:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--  <span>{{referralSourceData.businessName}}</span> -->
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>Address 1:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--  <span>{{referralSourceData.address1}}</span> -->
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>Address 2:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!-- <span>{{referralSourceData.Address2}}</span> -->
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>City:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!-- <span>{{referralSourceData.city}}</span> -->
+																	</td>
+																	<td></td>
+																	<td>
+																		<span>State:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--     <span>{{referralSourceData.state}}</span> -->
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>County:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--  <span>{{referralSourceData.county}}</span> -->
+																	</td>
+																	<td></td>
+																	<td>
+																		<span>Zip:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--  <span>{{referralSourceData.zip}}</span> -->
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>Phone:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--  <span>{{referralSourceData.phone}}</span> -->
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>Fax:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--    <span>{{referralSourceData.fax}}</span> -->
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span>Contact Name:</span>
+																	</td>
+																	<td>
+																		<input type="text" class="form-control" width="20" />
+																		<!--   <span>{{referralSourceData.contactName}}</span> -->
+																	</td>
+																</tr>
+															</table>
+														</div>
+													</div>
+												</div>
+												<div class="step-pane" data-step="6">
+													<!--DME Provider -->
+													<!-- DME Provider -->
+													<div class="form-group container-fluid dmeProviderDiv">
+														<div class="row">
+
+
+															<div class="container-fluid col-xs-6 dmeProviderInternalDiv" *ngIf="isUserInternal == true; else other_dmeProviderDiv">
+																<div class="row authDetail-labelTextbox">
+																	<span class="labelLarge-requests col-xs-12">Internal</span>
+																	<hr />
+																</div>
+
+																<div style="margin-left: 4px;">
+																	<table class="dmeProviderModalTable">
+																		<tr>
+																			<td>
+																				<span>NPI:</span>
+																			</td>
+																			<td>
+																				<input type="text" class="form-control" width="20" />
+																				<!--  <span>{{referralSourceData.npi}}</span> -->
+																			</td>
+																			<td>
+																				<i class="fa fa-asterisk requiredFieldIndicatorFa"></i>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<span>Business Name:</span>
+																			</td>
+																			<td>
+																				<input type="text" class="form-control" width="20" />
+																				<!--  <span>{{referralSourceData.businessName}}</span> -->
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<span>Address 1:</span>
+																			</td>
+																			<td>
+																				<input type="text" class="form-control" width="20" />
+																				<!--  <span>{{referralSourceData.address1}}</span> -->
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<span>Address 2:</span>
+																			</td>
+																			<td>
+																				<input type="text" class="form-control" width="20" />
+																				<!-- <span>{{referralSourceData.Address2}}</span> -->
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<span>City:</span>
+																			</td>
+																			<td>
+																				<input type="text" class="form-control" width="20" />
+																				<!-- <span>{{referralSourceData.city}}</span> -->
+																			</td>
+																			<td></td>
+																			<td>
+																				<span>State:</span>
+																			</td>
+																			<td>
+																				<input type="text" class="form-control" width="20" />
+																				<!--     <span>{{referralSourceData.state}}</span> -->
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<span>County:</span>
+																			</td>
+																			<td>
+																				<input type="text" class="form-control" width="20" />
+																				<!--  <span>{{referralSourceData.county}}</span> -->
+																			</td>
+																			<td></td>
+																			<td>
+																				<span>Zip:</span>
+																			</td>
+																			<td>
+																				<input type="text" class="form-control" width="20" />
+																				<!--  <span>{{referralSourceData.zip}}</span> -->
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<span>Phone:</span>
+																			</td>
+																			<td>
+																				<input type="text" class="form-control" width="20" />
+																				<!--  <span>{{referralSourceData.phone}}</span> -->
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<span>Fax:</span>
+																			</td>
+																			<td>
+																				<input type="text" class="form-control" width="20" />
+																				<!--    <span>{{referralSourceData.fax}}</span> -->
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<span>Contact Name:</span>
+																			</td>
+																			<td>
+																				<input type="text" class="form-control" width="20" />
+																				<!--   <span>{{referralSourceData.contactName}}</span> -->
+																			</td>
+																		</tr>
+																	</table>
+																</div>
+															</div>
+
+															<ng-template #other_dmeProviderDiv>
+																<div class="container-fluid  col-xs-6 dmeProviderExternalDiv">
+																	<div class="row authDetail-labelTextbox">
+																		<span class="labelLarge-requests col-xs-12">External</span>
+																		<hr />
+																	</div>
+																	<div class="row">
+																		<span>Associated Provider</span>
+																		<hr />
+																		<span>The providers listed are associated with your account upon registration.  Choose from providers below.</span>
+																	</div>
+																	<div class="row">
+																		<input type="text" class="form-control pull-right" width="20" value="Filter result here" />
+																	</div>
+																	<div class="row">
+																		<input type="text" class="form-control" width="20" value="ABC Provider 033 Johnson St Ste B West Band TX 78744" />
+																	</div>
+																	<div class="row">
+																		<input type="text" class="form-control" width="20" value="ABC Provider 107 Front Street Dallas West Band TX 78744" />
+																	</div>
+																</div>
+															</ng-template>
+
+														</div>
+														<div class="row">
+															<div class="btn-group" role="group">
+																<button pButton type="button" label="Previous" class="btn ui-button-secondary"></button>
+																<input type="text" class="form-control" width="10" value="1" width="5" />
+																<button pButton type="button" label="Next" class="btn ui-button-secondary"></button>
+															</div>
+														</div>
+														<div class="row dmeProviderToggleButtonDiv">
+															<div class="pull-right">
+																<button pButton type="button" label="Toggle internal/external user" class="ui-button-secondary" (click)="toggleInternalExternalUser()"></button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="step-pane" data-step="7">
+													<!-- Documents -->
+													<div class="form-group container-fluid documentsPage1Div" *ngIf="showDocumentsPage1 == true; else other_uploadContent">
+														<div class="row">
+															<table class="documentsPage1Table">
+																<tr>
+																	<td>What documents are you uploading now?</td>
+																	<td>What is the date of the order/clinical documentation?</td>
+																</tr>
+																<tr>
+																	<td>
+																		<p-checkbox name="groupname1" value="val1" label="Signed Order" [(ngModel)]="selectedValues"></p-checkbox>
+																	</td>
+																	<td>
+																		<p-calendar [(ngModel)]="documentsSignedOrderDate" [showIcon]="true" name="myCalControl1"></p-calendar>
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<p-checkbox name="groupname1" value="val2" label="Supporting Documentation" [(ngModel)]="selectedValues"></p-checkbox>
+																	</td>
+																	<td>
+																		<p-calendar [(ngModel)]="documentsSupportingDocumentationDate" [showIcon]="true" name="myCalControl2"></p-calendar>
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<p-checkbox name="groupname1" value="val3" label="I have none of these" [(ngModel)]="selectedValues"></p-checkbox>
+																	</td>
+																</tr>
+															</table>
+														</div>
+
+														<div class="row documentsPage1BottomRow">
+															<div class="pull-right">
+																<button pButton type="button" label="Continue" class="ui-button-secondary" (click)="setShowUploadPage2()"></button>
+															</div>
+														</div>
+													</div>
+
+													<ng-template #other_uploadContent>
+														<div class="container-fluid documentsPage2Div">
+															<div class="row">
+																<p>
+																	You uploaded 1 file(s) with a total size of 149 KB out of 20480 KB. You have 20331 KB remaining that is available for use.
+																</p>
+															</div>
+															<div class="row">
+																<p>
+																	Use the Browse button to locate the desired file on your local drive. Once selected, click the down-arrow of the Document
+																	Type field and select the appropriate entry. Enter a brief description in the Description text field. Click
+																	Add File after all information has been specified.
+																</p>
+															</div>
+															<div class="row">
+																<label>Select File:</label>
+																<input type="text" class="form-control" width="20" />
+																<button pButton type="button" label="Browse" class="ui-button-secondary"></button>
+															</div>
+															<div class="row">
+																<label>Document Type:</label>
+																<input type="text" class="form-control" width="20" />
+															</div>
+															<div class="row">
+																<label>Description:</label>
+																<input type="text" class="form-control" width="20" />
+															</div>
+															<div class="row">
+																<div class="pull-left">
+																	<button pButton type="button" label="Go Back" class="ui-button-secondary" (click)="setShowUploadPage2()"></button>
+																</div>
+																<div class="pull-right">
+																	<button pButton type="button" label="Add File" class="ui-button-secondary"></button>
+																</div>
+															</div>
+															<div class="row">
+																<label>Select Documents to Upload</label>
+																<hr />
+
+																<p-dataTable [value]="selectDocumentsToUploadData" selectionMode="multiple" scrollable="true" scrollHeight="150px">
+																	<p-column field="fileName" header="File Name"></p-column>
+																	<p-column field="documentType" header="Document Type"></p-column>
+																	<p-column field="description" header="Description"></p-column>
+																	<p-column field="fileSize" header="File Size"></p-column>
+
+																	<p-column field="isAcknowledged" header="Is Acknowledged">
+																		<ng-template let-row="rowData" let-index="rowIndex" let-col pTemplate type="body">
+																			<input type="checkbox" [(ngModel)]="row[col.field]" name="mycheckBox1" />
+																		</ng-template>
+																	</p-column>
+																	<p-column header="isAcknowledged" [style]="{'width':'30px'}" selectionMode="multiple"></p-column>
+
+																	<p-column field="remove" header="Remove"></p-column>
+																	<p-column styleClass="text-center dup-col-1">
+																		<ng-template let-col let-dup="rowData" pTemplate="body">
+																			<div class="pl-1 pr-1">
+																				<a class="fa fa-remove" aria-hidden="true"></a>
+																			</div>
+																		</ng-template>
+																	</p-column>
+																</p-dataTable>
+															</div>
+														</div>
+													</ng-template>
+
+
+												</div>
+												<div class="step-pane" data-step="8">
+													<!-- Product Selection -->
+													<div class="form-group container productSelectionDiv">
+														<div class="row ">
+															<label>Please select a DME Product Category:</label>
+														</div>
+														<div class="row ">
+
+															<select class="form-control">
+															<option value="1" selected="selected">Select a Product Category</option>
+															<option value="2">Automatic External Defribrillator</option>
+															<option value="3">Cervial Traction</option>
+															<option value="4">Cold Therapy</option>
+															<option value="4">CPAP and BiPAP</option>
+														</select>
+
+														</div>
+														<div class="row productSelectionBottomRow">
+															<button pButton type="button" label="OK" class="ui-button-secondary pull-right"></button>
+														</div>
+
+													</div>
+												</div>
+											</form>
+										</div>
+										<!-- step content  -->
+
+									</fuel-ux-wizard>
+								</div>
+							</div>
+						</div>
+
+						<!-- footer for Requests modal -->
+						<div class="container-fluid">
+							<div class="row pull-left ">
+								<button pButton type="button" label="Reset Form" class="ui-button-secondary requestsFooterButtonLeft"></button>
+							</div>
+							<div class="row pull-right actions">
+								<button pButton type="button" label="Save" *ngIf="getCurrentStepNumber() > 5" class="ui-button-secondary requestsFooterButtonRight"></button>
+								<button pButton type="button" label="Cancel" class="ui-button-secondary requestsFooterButtonRight"></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" bsModal #childModal="bs-modal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title pull-left">Second modal</h4>
+						<button type="button" class="close pull-right" aria-label="Close" (click)="childModal.hide()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					</div>
+					<div class="modal-body">
+						This is static modal <br>
+						<button type="button" class="btn btn-primary" (click)="thirdModal.show()">Open third modal</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" bsModal #thirdModal="bs-modal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title pull-left">Third modal</h4>
+						<button type="button" class="close pull-right" aria-label="Close" (click)="thirdModal.hide()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					</div>
+					<div class="modal-body">
+						This is static modal <br> Click <b>&times;</b> to close modal.
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- end modals for Requests -->
+
+		<div *ngIf="setNoRecords()">
+			<div class="row">
+				<div *ngIf="isExternalUser" class="col-lg-12">
+					<div class="panel panel-defualt no-results-panel">
+						<div *ngIf="isMemberIDSearch" class="panel-body no-results-body">
+							The member information was not found or you do not have the permission level to access this information. If searching by
+							Member ID, please do not use the ID prefix. If you are still unable to locate the member, please fax your request
+							to myNexus at 1-888-333-4444.
+						</div>
+
+						<div *ngIf="isAuthNoSearch" class="panel-body no-results-body">
+							The record you requested was not found. Please verify the the record number entered is correct. If still not found, search
+							by Member ID. If you are still unable to locate the member, please contact myNexus at 1-888-333-4444.
+						</div>
+
+						<div *ngIf="isRequestNoSearch" class="panel-body no-results-body">
+							The record you requested was not found. Please verify the the record number entered is correct. If still not found, search
+							by Member ID. If you are still unable to locate the member, please contact myNexus at 1-888-333-4444.
+						</div>
+
+					</div>
+				</div>
+				<div *ngIf="isInternalUser">
+					<div *ngIf="isMemberIDSearch" class="panel-body no-results-body">
+						The member information was not found. If searching by Member ID, please do not use the ID prefix. If you are still unable
+						to locate the member, please move the Fax to the "Member Not Eligible" folder.
+					</div>
+
+					<div *ngIf="isAuthNoSearch" class="panel-body no-results-body">
+						The record you requested was not found. Please verify the the record number entered is correct. If still not found, search
+						by Member ID. If you are still unable to locate the member, please contact your supervisor.
+					</div>
+
+					<div *ngIf="isRequestNoSearch" class="panel-body no-results-body">
+						The record you requested was not found. Please verify the the record number entered is correct. If still not found, search
+						by Member ID. If you are still unable to locate the member, please contact your supervisor.
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div *ngIf="memberInformation.member">
+			<sa-widgets-grid>
+				<div class="row">
+					<article class="col-lg-12">
+						<member-details-widget [member]="memberInformation.member" [showVerticle]="false"></member-details-widget>
+					</article>
+				</div>
+
+				<div class="row">
+					<article>
+						<!-- Will be stackable containers-->
+						<dynamic-component [ngClass]="'col-md-12 col-lg-12'" *ngFor="let component of components" [component]="component" (output)="getOutput($event)"></dynamic-component>
+						<!-- 
+                    For side by side containers
+                    <dynamic-component [ngClass]="'col-md-12 col-lg-' + (components.length == 1 || memberInformation.requests.length == 0 || memberInformation.authorizations.length == 0 ? '12' : '6')" *ngFor="let component of components" [component]="component" (output)="getOutput($event)"></dynamic-component> 
+                    -->
+						<!--
+                    <requests [requests]="memberInformation.requests" [showMe]="array.isArray(memberInformation.requests) && memberInformation.requests.length > 0"></requests>
+                    <authorizations [authorizations]="memberInformation.authorizations" [showMe]="array.isArray(memberInformation.authorizations) && memberInformation.authorizations.length > 0"></authorizations>
+                    -->
+					</article>
+				</div>
+			</sa-widgets-grid>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<h2 class="message" *ngFor="let message of memberInformation.messages">
+					<strong>{{ message }}</strong>
+				</h2>
+			</div>
+		</div>
+
+		<div class="row">
+			<button pButton type="button" label="Requests" class="ui-button-secondary pull-right" (click)="parentModalRequests.show()"></button>
+		</div>
+	</form>
+</div>

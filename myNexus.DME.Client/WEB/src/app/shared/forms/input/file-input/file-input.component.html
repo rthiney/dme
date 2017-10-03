@@ -1,0 +1,7 @@
+<div class="input input-file">
+    <span class="button">
+        <input type="file" #file (change)="viewport.value=file.value"/>
+        Browse
+      </span>
+    <input #viewport type="text" placeholder="Include some files" readonly/>
+</div>

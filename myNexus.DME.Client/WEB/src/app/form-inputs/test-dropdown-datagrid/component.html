@@ -1,0 +1,51 @@
+﻿<sa-widget [editbutton]="false" color="blueDark">
+    <header><span class="widget-icon"> <i class="fa fa-table"></i></span>
+        <h2>Column Filters - Dropdown Test</h2>
+    </header>
+    <div>
+        <div class="widget-body no-padding">
+            <sa-datatable [options]="{
+                ajax: 'assets/api/fake-data/filters.json',
+                columns: [ 
+                    {data: 'name'}, 
+                    {data: 'position'}, 
+                    {data: 'office'}, 
+                    {data: 'age'}, 
+                    {data: 'date'}, 
+                    {data: 'salary'} 
+                    ]
+                }" filter="true" tableClass="table table-condenced table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th class="hasinput" [ngStyle]="{width:'17%'}">
+                            <input type="text" class="form-control" placeholder="Filter Name" />
+                        </th>
+                        <th class="hasinput" [ngStyle]="{width:'18%'}">
+                            <input type="text" class="form-control" placeholder="Filter Position" />
+                        </th>
+                        <th class="hasinput" [ngStyle]="{width:'10%'}">
+                            <input type="text" class="form-control" placeholder="Filter Office" />
+                        </th>
+                        <th class="hasinput" [ngStyle]="{width:'17%'}">
+                            <input type="text" class="form-control" placeholder="Filter Age" />
+                        </th>
+                        <th class="hasinput icon-addon">
+                            <input id="dateselect_filter" type="text" placeholder="Filter Date" class="form-control datepicker" data-dateformat="yy/mm/dd" />
+                        </th>
+                        <th class="hasinput" [ngStyle]="{width:'16%'}">
+                            <input type="text" class="form-control" placeholder="Filter Salary" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th data-class="expand">Name</th>
+                        <th>Position</th>
+                        <th data-hide="phone">Office</th>
+                        <th data-hide="phone">Age</th>
+                        <th data-hide="phone,tablet">Start date</th>
+                        <th data-hide="phone,tablet">Salary</th>
+                    </tr>
+                </thead>
+            </sa-datatable>
+        </div>
+    </div>
+</sa-widget>

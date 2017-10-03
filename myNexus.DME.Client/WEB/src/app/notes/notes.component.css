@@ -1,0 +1,12 @@
+.column-big {
+    width: 210px;
+}
+
+.column-small {
+    width: 50px;
+}
+
+.myTable td:nth-child(3),.myTable th:nth-child(3) {
+    width: 200px;
+ }
+

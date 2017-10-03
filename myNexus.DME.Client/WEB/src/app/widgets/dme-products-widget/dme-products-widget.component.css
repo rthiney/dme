@@ -1,0 +1,168 @@
+.component-authDetails{
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
+.subComponent-authDetails{
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
+.label-authDetails{
+	min-width: 150px;
+	font-weight: bold;
+}
+
+.textData-authDetails{
+	min-width: 150px;
+}
+
+.largeLabel-authDetails{
+	min-width: 150px;
+	font-size: 1.1em;
+	color: #1e5abc;
+	font-weight: bold;
+}
+
+.largeTextData-authDetails{
+	color: #1e5abc;
+	font-size: 1.1em;
+	min-width: 150px;
+
+}
+
+#requestHeaderId{
+	padding: 2px;
+	margin-bottom: 2px;
+}
+
+#statusHeaderId{
+	padding: 2px;
+	margin-bottom: 2px;
+}
+
+.lineHeight-AuthDetails{
+	line-height: 1;
+}
+
+.authDetails-component{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.left-authDetails {
+	float: left;
+}
+.right-authDetails {
+	float: right;
+}
+
+.spcialInstructionsEditIcon{   
+
+}
+
+.specialInstructionsBody{
+	font-size: 1.1em;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+	color: #fff;
+	background-color: gray;
+}
+
+.buttonNoBorder
+{
+	border:0px solid transparent; /* this was 1px earlier */
+}
+
+.dropdown-menu {
+	border-radius: 0;
+	border-bottom: 2px solid #ADADAD;
+	background: #F3F1EE !important;
+}
+
+.hrNoPadding {
+	margin:5px 0 0 0; 
+	padding:0px;
+}
+
+.largerFont{
+	font-size: 1.2em;
+}
+
+.requestAuthWell{
+	padding-left: 19px;
+	padding-top: 15px;
+	padding-right: 19px;
+	padding-bottom: 0;
+}
+
+.requestStatusEditIcon{
+	margin: 0px;
+}
+
+.singleNoteContainerDiv{
+	margin: 8px;
+}
+
+.pre-scrollable {
+	max-height: 340px;
+	overflow-y: scroll;
+}
+
+.productLineDetailsLastRow{
+	margin-top: 10px;
+
+}
+
+.largerNoteTypeFont{
+	font-size: 1.1em;
+}
+
+.largerIcon{
+	font-size: 1.2em;
+}
+
+.header {
+	border-color: #45474b!important;
+	background: #09499F!important;
+	color: #fff;
+}
+
+.authDetailTable{
+	border-collapse: separate;
+	border-spacing: 5px 0;
+}
+
+.referralSourceModalTable{
+	border-collapse: separate;
+	border-spacing: 20px 5px;
+}
+
+.ui-accordion-content-wrapper.ui-accordion-content-wrapper-overflown {
+	overflow: hidden;
+}
+
+.accordionGroup{
+	border: none;
+}
+
+.accordionHeading{
+	border: none;
+}
+
+.panel-group {
+	margin-bottom: 0;
+}
+
+.specInstructionsPrefix{
+	padding-left: 30px;
+}
+
+.specialInstructionsPencilDiv{
+	margin: 10px;
+}
+
+.authDetailTable td{
+	white-space: nowrap;
+}

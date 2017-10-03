@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E4F2F3E4-BEB2-4F6F-B709-63BE04539FE1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>myNexus.DME.Client</RootNamespace>
+    <AssemblyName>myNexus.DME.Client</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <AssemblyVersion>1.0.1.6486</AssemblyVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WEB\src\app\component-shared-module\" />
+    <Folder Include="WEB\src\app\configuration-module\" />
+    <Folder Include="WEB\src\app\entities\models\" />
+    <Folder Include="WEB\src\app\shared-module\" />
+    <Folder Include="WEB\src\app\utility\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WEB\.angular-cli.json" />
+    <None Include="WEB\e2e\tsconfig.e2e.json" />
+    <None Include="WEB\package-lock.json" />
+    <None Include="WEB\package.json" />
+    <None Include="WEB\src\app\entities\enums" />
+    <None Include="WEB\src\app\shared\forms\input\radio\radio.component.js.map" />
+    <None Include="WEB\src\assets\api\fake-data\filters.json" />
+    <None Include="WEB\src\assets\api\fake-data\nestable-lists.json" />
+    <None Include="WEB\src\assets\api\fake-data\standard.json" />
+    <None Include="WEB\src\assets\api\fake-data\tree-view.json" />
+    <None Include="WEB\src\assets\api\langs\cn.json" />
+    <None Include="WEB\src\assets\api\langs\de.json" />
+    <None Include="WEB\src\assets\api\langs\es.json" />
+    <None Include="WEB\src\assets\api\langs\fr.json" />
+    <None Include="WEB\src\assets\api\langs\jp.json" />
+    <None Include="WEB\src\assets\api\langs\kr.json" />
+    <None Include="WEB\src\assets\api\langs\pt.json" />
+    <None Include="WEB\src\assets\api\langs\ru.json" />
+    <None Include="WEB\src\assets\api\langs\us.json" />
+    <None Include="WEB\src\assets\api\langs\zh.json" />
+    <None Include="WEB\src\assets\api\languages.json" />
+    <None Include="WEB\src\assets\fonts\font-awesome\fontawesome-webfont.eot" />
+    <None Include="WEB\src\assets\fonts\font-awesome\fontawesome-webfont.ttf" />
+    <None Include="WEB\src\assets\fonts\font-awesome\fontawesome-webfont.woff" />
+    <None Include="WEB\src\assets\fonts\font-awesome\fontawesome-webfont.woff2" />
+    <None Include="WEB\src\assets\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="WEB\src\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="WEB\src\assets\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="WEB\src\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="WEB\src\assets\fonts\summernote.eot" />
+    <None Include="WEB\src\assets\fonts\summernote.ttf" />
+    <None Include="WEB\src\assets\fonts\summernote.woff" />
+    <None Include="WEB\src\tsconfig.app.json" />
+    <None Include="WEB\src\tsconfig.spec.json" />
+    <None Include="WEB\tsconfig.json" />
+    <None Include="WEB\tslint.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WEB\karma.conf.js" />
+    <Content Include="WEB\protractor.conf.js" />
+    <Content Include="WEB\src\app\+home\home.component.css" />
+    <Content Include="WEB\src\app\+home\home.component.html" />
+    <Content Include="WEB\src\app\auth-detail\auth-detail.component.css" />
+    <Content Include="WEB\src\app\auth-detail\auth-detail.component.html" />
+    <Content Include="WEB\src\app\contact\contact.component.css" />
+    <Content Include="WEB\src\app\contact\contact.component.html" />
+    <Content Include="WEB\src\app\errors\views\forbidden\forbidden.component.css" />
+    <Content Include="WEB\src\app\errors\views\forbidden\forbidden.component.html" />
+    <Content Include="WEB\src\app\form-inputs\form-inputs.component.css" />
+    <Content Include="WEB\src\app\form-inputs\form-inputs.component.html" />
+    <Content Include="WEB\src\app\form-inputs\test-dropdown-datagrid\component.html" />
+    <Content Include="WEB\src\app\member-information\member-information.component.css" />
+    <Content Include="WEB\src\app\member-information\member-information.component.html" />
+    <Content Include="WEB\src\app\member-search-input\member-search-input.component.css" />
+    <Content Include="WEB\src\app\member-search-input\member-search-input.component.html" />
+    <Content Include="WEB\src\app\notes\notes.component.css" />
+    <Content Include="WEB\src\app\notes\notes.component.html" />
+    <Content Include="WEB\src\app\queue-list\queue-list.component.css" />
+    <Content Include="WEB\src\app\queue-list\queue-list.component.html" />
+    <Content Include="WEB\src\app\shared\forms\input\dual-list-box\dual-list-box.component.css" />
+    <Content Include="WEB\src\app\shared\forms\input\dual-list-box\dual-list-box.component.html" />
+    <Content Include="WEB\src\app\shared\forms\input\file-input\file-input.component.html" />
+    <Content Include="WEB\src\app\shared\forms\input\on-off-switch\on-off-switch.component.html" />
+    <Content Include="WEB\src\app\shared\forms\input\radio\radio.component.js" />
+    <Content Include="WEB\src\app\shared\forms\input\radio\radio.styles.css" />
+    <Content Include="WEB\src\app\shared\forms\input\radio\radio.template.html" />
+    <Content Include="WEB\src\app\shared\forms\input\x-editable\x-editable.component.css" />
+    <Content Include="WEB\src\app\shared\forms\input\x-editable\x-editable.component.html" />
+    <Content Include="WEB\src\app\shared\i18n\language-selector\language-selector.component.html" />
+    <Content Include="WEB\src\app\shared\layout\app-layouts\main-layout.component.html" />
+    <Content Include="WEB\src\app\shared\layout\footer\footer.component.html" />
+    <Content Include="WEB\src\app\shared\layout\header\collapse-menu\collapse-menu.component.html" />
+    <Content Include="WEB\src\app\shared\layout\header\full-screen\full-screen.component.html" />
+    <Content Include="WEB\src\app\shared\layout\header\header.component.html" />
+    <Content Include="WEB\src\app\shared\layout\layout-switcher.component.html" />
+    <Content Include="WEB\src\app\shared\layout\navigation\navigation.component.html" />
+    <Content Include="WEB\src\app\shared\layout\ribbon\ribbon.component.html" />
+    <Content Include="WEB\src\app\shared\layout\shortcut\shortcut.component.html" />
+    <Content Include="WEB\src\app\widgets\authorization-details-widget\authorization-details-widget.component.css" />
+    <Content Include="WEB\src\app\widgets\authorization-details-widget\authorization-details-widget.component.html" />
+    <Content Include="WEB\src\app\widgets\authorizations-widget\authorizations-widget.component.css" />
+    <Content Include="WEB\src\app\widgets\authorizations-widget\authorizations-widget.component.html" />
+    <Content Include="WEB\src\app\widgets\dme-products-widget\dme-products-widget.component.css" />
+    <Content Include="WEB\src\app\widgets\dme-products-widget\dme-products-widget.component.html" />
+    <Content Include="WEB\src\app\widgets\member-details-widget\member-details-widget.component.css" />
+    <Content Include="WEB\src\app\widgets\member-details-widget\member-details-widget.component.html" />
+    <Content Include="WEB\src\app\widgets\queues-widget\queues-widget.component.css" />
+    <Content Include="WEB\src\app\widgets\queues-widget\queues-widget.component.html" />
+    <Content Include="WEB\src\app\widgets\requests-widget\requests-widget.component.css" />
+    <Content Include="WEB\src\app\widgets\requests-widget\requests-widget.component.html" />
+    <Content Include="WEB\src\assets\css\bootstrap.min.css" />
+    <Content Include="WEB\src\assets\css\demo.min.css" />
+    <Content Include="WEB\src\assets\css\font-awesome.min.css" />
+    <Content Include="WEB\src\assets\css\site.css" />
+    <Content Include="WEB\src\assets\css\smartadmin-angular-next.css" />
+    <Content Include="WEB\src\assets\css\smartadmin-production-plugins.min.css" />
+    <Content Include="WEB\src\assets\css\smartadmin-production.min.css" />
+    <Content Include="WEB\src\assets\css\smartadmin-rtl.min.css" />
+    <Content Include="WEB\src\assets\css\smartadmin-skins.min.css" />
+    <Content Include="WEB\src\assets\fonts\font-awesome\fontawesome-webfont.svg" />
+    <Content Include="WEB\src\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="WEB\src\assets\img\ajax-loader.gif" />
+    <Content Include="WEB\src\assets\img\blank.gif" />
+    <Content Include="WEB\src\assets\img\clear.png" />
+    <Content Include="WEB\src\assets\img\favicon\favicon.ico" />
+    <Content Include="WEB\src\assets\img\flags\de.png" />
+    <Content Include="WEB\src\assets\img\flags\es.png" />
+    <Content Include="WEB\src\assets\img\flags\flags.png" />
+    <Content Include="WEB\src\assets\img\flags\us.png" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-1.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-10.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-11.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-12.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-13.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-14.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-15.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-16.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-17.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-18.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-19.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-2.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-20-bw.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-20.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-21.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-22.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-23.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-24.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-3.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-4.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-5.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-6.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-7.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-8.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-full-9.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-1.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-10.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-11.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-12.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-13.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-14.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-15.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-16.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-17.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-18.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-19.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-2.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-20.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-21.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-22.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-23.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-24.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-3.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-4.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-5.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-6.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-7.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-8.jpg" />
+    <Content Include="WEB\src\assets\img\gallery-demo\superbox-thumb-9.jpg" />
+    <Content Include="WEB\src\assets\img\glass.jpg" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-bg_flat_0_999999_40x100.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-bg_glass_75_ffffff_1x400.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-icons_222222_256x240.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-icons_2e83ff_256x240.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-icons_428bca_256x240.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-icons_454545_256x240.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-icons_555555_256x240.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-icons_888888_256x240.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-icons_999999_256x240.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-icons_f0ad4e_256x240.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-icons_f6cf3b_256x240.png" />
+    <Content Include="WEB\src\assets\img\jqueryui\ui-icons_ffffff_256x240.png" />
+    <Content Include="WEB\src\assets\img\loading.gif" />
+    <Content Include="WEB\src\assets\img\logo-non-transparent.png" />
+    <Content Include="WEB\src\assets\img\logo-transparent.png" />
+    <Content Include="WEB\src\assets\img\minus.png" />
+    <Content Include="WEB\src\assets\img\mybg.png" />
+    <Content Include="WEB\src\assets\img\pattern\divider.jpg" />
+    <Content Include="WEB\src\assets\img\pattern\graphy-xs.png" />
+    <Content Include="WEB\src\assets\img\pattern\graphy.png" />
+    <Content Include="WEB\src\assets\img\pattern\license-info.txt" />
+    <Content Include="WEB\src\assets\img\pattern\lightpaperfibers.png" />
+    <Content Include="WEB\src\assets\img\pattern\movable.png" />
+    <Content Include="WEB\src\assets\img\pattern\nistri-xs.png" />
+    <Content Include="WEB\src\assets\img\pattern\nistri.png" />
+    <Content Include="WEB\src\assets\img\pattern\overlay-pattern.png" />
+    <Content Include="WEB\src\assets\img\pattern\paper-xs.png" />
+    <Content Include="WEB\src\assets\img\pattern\paper.png" />
+    <Content Include="WEB\src\assets\img\pattern\pattern.png" />
+    <Content Include="WEB\src\assets\img\pattern\sneaker_mesh_fabric-xs.png" />
+    <Content Include="WEB\src\assets\img\pattern\sneaker_mesh_fabric.png" />
+    <Content Include="WEB\src\assets\img\pattern\tileable_wood_texture-xs.png" />
+    <Content Include="WEB\src\assets\img\pattern\tileable_wood_texture.png" />
+    <Content Include="WEB\src\assets\img\plus.png" />
+    <Content Include="WEB\src\assets\img\select2-spinner.gif" />
+    <Content Include="WEB\src\assets\img\sort_asc.png" />
+    <Content Include="WEB\src\assets\img\sort_asc_disabled.png" />
+    <Content Include="WEB\src\assets\img\sort_both.png" />
+    <Content Include="WEB\src\assets\img\sort_desc.png" />
+    <Content Include="WEB\src\assets\img\sort_desc_disabled.png" />
+    <Content Include="WEB\src\assets\img\violate.jpg" />
+    <Content Include="WEB\src\index.html" />
+    <Content Include="WEB\src\styles.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="WEB\e2e\app.e2e-spec.ts" />
+    <TypeScriptCompile Include="WEB\e2e\app.po.ts" />
+    <TypeScriptCompile Include="WEB\src\app\+home\home.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\+home\home.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\+home\home.routing.ts" />
+    <TypeScriptCompile Include="WEB\src\app\+home\home.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\app.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\app.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\app.routing.ts" />
+    <TypeScriptCompile Include="WEB\src\app\auth-detail\auth-detail.component.spec.ts" />
+    <TypeScriptCompile Include="WEB\src\app\auth-detail\auth-detail.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\auth-detail\auth-detail.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\auth-detail\auth-detail.routing.ts" />
+    <TypeScriptCompile Include="WEB\src\app\auth-detail\auth-detail.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\auth-detail\authorization.ts" />
+    <TypeScriptCompile Include="WEB\src\app\contact\contact.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\contact\contact.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\contact\contact.routing.ts" />
+    <TypeScriptCompile Include="WEB\src\app\core\api\json-api.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\core\core.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\core\guards\can-activate-via-auth-guard.ts" />
+    <TypeScriptCompile Include="WEB\src\app\core\guards\internal-user-only-guard.ts" />
+    <TypeScriptCompile Include="WEB\src\app\core\guards\module-import-guard.ts" />
+    <TypeScriptCompile Include="WEB\src\app\entities\interfaces\i-auth-details-dme-product.ts" />
+    <TypeScriptCompile Include="WEB\src\app\entities\interfaces\i-auth-details-member-history.ts" />
+    <TypeScriptCompile Include="WEB\src\app\entities\interfaces\i-auth-details-product-note.ts" />
+    <TypeScriptCompile Include="WEB\src\app\entities\interfaces\i-general-note.ts" />
+    <TypeScriptCompile Include="WEB\src\app\entities\interfaces\i-lookup-object.ts" />
+    <TypeScriptCompile Include="WEB\src\app\entities\interfaces\i-member-details-note.ts" />
+    <TypeScriptCompile Include="WEB\src\app\errors\app-error-handler.ts" />
+    <TypeScriptCompile Include="WEB\src\app\errors\errors.enum.ts" />
+    <TypeScriptCompile Include="WEB\src\app\errors\responce-error.ts" />
+    <TypeScriptCompile Include="WEB\src\app\errors\response-error-handler.ts" />
+    <TypeScriptCompile Include="WEB\src\app\errors\views\error-views.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\errors\views\forbidden\forbidden.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\form-inputs\form-inputs.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\form-inputs\form-inputs.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\form-inputs\form-inputs.routing.ts" />
+    <TypeScriptCompile Include="WEB\src\app\form-inputs\test-dropdown-datagrid\component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\helpers\account-session-manager.ts" />
+    <TypeScriptCompile Include="WEB\src\app\helpers\dynamic-component\dynamic-component-map.ts" />
+    <TypeScriptCompile Include="WEB\src\app\helpers\dynamic-component\dynamic-component-utilities.ts" />
+    <TypeScriptCompile Include="WEB\src\app\helpers\dynamic-component\dynamic-component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\helpers\member-session-manager.ts" />
+    <TypeScriptCompile Include="WEB\src\app\helpers\user-session-manager.ts" />
+    <TypeScriptCompile Include="WEB\src\app\member-information\member-information.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\member-information\member-information.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\member-information\member-information.routing.ts" />
+    <TypeScriptCompile Include="WEB\src\app\member-information\member-information.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\member-information\member-information.ts" />
+    <TypeScriptCompile Include="WEB\src\app\member-search-input\member-search-input.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\member-search-input\member-search-input.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\member-search-input\member-search-input.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\member-search-input\search-criteria.ts" />
+    <TypeScriptCompile Include="WEB\src\app\member-search\member-search.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\member-search\member-search.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\notes\notes.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\notes\notes.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\notes\notes.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\queue-list\queue-list.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\queue-list\queue-list.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\queue-list\queue-list.routing.ts" />
+    <TypeScriptCompile Include="WEB\src\app\queue-list\queue-list.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\services\auth-locking.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\services\base-http.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\services\data.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\services\diagnosis.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\directives\dropzone\dropzone.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\directives\dropzone\dropzone.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\directives\editors\markdown-editor.bundle.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\directives\editors\markdown-editor.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\directives\editors\smartadmin-editors.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\directives\editors\summernote-attach.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\directives\editors\summernote-detach.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\directives\masked-input\masked-input.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\directives\pickers\smart-clockpicker.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\directives\pickers\smart-timepicker.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\directives\pickers\ui-datepicker.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\directives\select2\select2.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\directives\select2\select2.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\directives\sliders\ionslider.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\directives\sliders\nouislider.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\dual-list-box\dual-list-box.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\dual-list-box\dual-list-box.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\file-input\file-input.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\file-input\file-input.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\on-off-switch\on-off-switch.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\on-off-switch\on-off-switch.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\radio\radio.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\radio\radio.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\radio\radio.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\radio\radio.type.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\smartadmin-input.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\x-editable\x-editable.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\input\x-editable\x-editable.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\smartadmin-forms.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\wizards\fuel-ux-wizard.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\forms\wizards\smartadmin-wizards.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\i18n\i18n.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\i18n\i18n.pipe.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\i18n\i18n.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\i18n\index.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\i18n\language-selector\index.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\i18n\language-selector\language-selector.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\i18n\languages.model.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\app-layouts\main-layout.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\footer\footer.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\footer\index.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\header\collapse-menu\collapse-menu.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\header\collapse-menu\index.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\header\full-screen\full-screen.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\header\full-screen\index.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\header\header.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\header\header.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\header\index.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\index.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\layout-switcher.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\layout.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\layout.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\navigation\big-breadcrumbs.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\navigation\index.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\navigation\minify-menu.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\navigation\navigation.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\navigation\navigation.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\navigation\smart-menu.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\ribbon\index.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\ribbon\ribbon.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\ribbon\route-breadcrumbs.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\shortcut\index.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\layout\shortcut\shortcut.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\smartadmin.config.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\smartadmin.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\datatable\datatable.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\datatable\smartadmin-datatable.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\gallery\gallery.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\gallery\gallery.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\jquery-ui\jquery-ui.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\jquery-ui\jqui-accordion.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\jquery-ui\jqui-autocomplete.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\jquery-ui\jqui-dialog\jqui-dialog-launcher.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\jquery-ui\jqui-dialog\jqui-dialog.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\jquery-ui\jqui-menu.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\jquery-ui\jqui-progressbar.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\jquery-ui\jqui-slider.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\jquery-ui\jqui-spinner.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\jquery-ui\jqui-tabs.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\nestable-list\nestable-list.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\nestable-list\nestable-list.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\smart-progressbar\progressbar.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\smart-progressbar\smart-progressbar.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\smartadmin-ui.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\tree-view\tree-view.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\ui\tree-view\tree-view.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\user\index.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\user\login-info\login-info.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\user\logout\logout.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\user\user.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\user\user.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\utils\body.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\utils\dom-helpers.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\utils\field-filter.pipe.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\utils\moment.pipe.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\utils\notification.service.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\utils\toggle-active.directive.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\utils\utils.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\widgets\smartadmin-widgets.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\widgets\widget.defaults.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\widgets\widgets-grid\widgets-grid.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\shared\widgets\widget\widget.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\widgets\authorization-details-widget\authorization-details-widget.component.spec.ts" />
+    <TypeScriptCompile Include="WEB\src\app\widgets\authorization-details-widget\authorization-details-widget.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\widgets\authorization-details-widget\authorization-details-widget.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\widgets\authorizations-widget\authorizations-widget.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\widgets\authorizations-widget\authorizations-widget.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\widgets\dme-products-widget\dme-products-widget.component.spec.ts" />
+    <TypeScriptCompile Include="WEB\src\app\widgets\dme-products-widget\dme-products-widget.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\widgets\dme-products-widget\dme-products-widget.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\widgets\member-details-widget\member-details-widget.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\widgets\member-details-widget\member-details-widget.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\widgets\queues-widget\queues-widget.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\widgets\queues-widget\queues-widget.module.ts" />
+    <TypeScriptCompile Include="WEB\src\app\widgets\requests-widget\requests-widget.component.ts" />
+    <TypeScriptCompile Include="WEB\src\app\widgets\requests-widget\requests-widget.module.ts" />
+    <TypeScriptCompile Include="WEB\src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="WEB\src\environments\environment.ts" />
+    <TypeScriptCompile Include="WEB\src\lib.ts" />
+    <TypeScriptCompile Include="WEB\src\main.ts" />
+    <TypeScriptCompile Include="WEB\src\polyfills.ts" />
+    <TypeScriptCompile Include="WEB\src\test.ts" />
+    <TypeScriptCompile Include="WEB\src\typings.d.ts" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

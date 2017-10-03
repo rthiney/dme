@@ -1,0 +1,815 @@
+<!-- <sa-widget color="blueDark" [colorbutton]="false" [editbutton]="false" [deletebutton]="false" [custombutton]="false"> -->
+    <p-dialog [(visible)]="showAuthNotesDialog" modal="true" resizable="false" height="600" width="1300" responsive="true">
+        <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px;">
+          Auth Notes
+        </p-header>       
+        <app-notes></app-notes>                 
+    </p-dialog>
+<sa-widget *ngIf="showMe" name="app-authorization-details-widget" color="blueDark" colorbutton editbutton deletebutton sortable>
+      <p-dialog [(visible)]="showMemberHistoryDialog" modal="true" resizable="false" height="auto" width="1200" responsive="true">
+          <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal;">
+            <i class="fa fa-info-circle fg-primary"></i> Member History
+          </p-header>
+          <div class="container-fluid">
+            <div class="row ">
+              <div class="container-fluid col-xs-12 ">
+                <div style="margin-left: 4px;">
+                  <p-dataTable [value]="memberHistoryGridData" sortMode="single" scrollable="true" scrollHeight="240px" 
+                    selectionMode="single" [(selection)]="selectedProduct" >
+                    <p-column field="authDate" header="Auth Date" [sortable]="true" [style]="{'width':'90px'}">
+                      <ng-template let-row="rowData" pTemplate="body">
+                        {{row.authDate | date: 'MM/dd/yyyy'}}
+                      </ng-template>
+                    </p-column>
+                    <p-column field="authNumber" header="Auth No." [sortable]="true" [style]="{'width':'130px'}" ></p-column>
+                    <p-column field="dmeProvider" header="DME Provider" [sortable]="true" [style]="{'width':'140px'}"></p-column>
+                    <p-column field="hcpcs" header="HCPCS" [sortable]="true" [style]="{'width':'110px'}" [filter]="true"  
+                      filterMatchMode="contains" filterPlaceholder="Contains"></p-column>
+                    <p-column field="mod" header="Mod" [sortable]="true" [style]="{'width':'50px'}"></p-column>
+                    <p-column field="description" header="Description" [sortable]="true" [filter]="true" filterMatchMode="contains" filterPlaceholder="Contains" 
+                      [style]="{'width':'140px'}"></p-column>
+                    <p-column field="reqUnits" header="Req. Units" [sortable]="true" [style]="{'width':'70px'}"></p-column>
+                    <p-column field="allowedUnits" header="Allowed Units" [sortable]="true" [style]="{'width':'70px'}"></p-column>
+                    <p-column field="um" header="U/M" [sortable]="true" [style]="{'width':'80px'}"></p-column>
+                    <p-column field="startDate" header="Start Date" [sortable]="true" [style]="{'width':'90px'}">
+                      <ng-template let-row="rowData" pTemplate="body">
+                        {{row.startDate | date: 'MM/dd/yyyy'}}
+                      </ng-template>
+                    </p-column>
+                    <p-column field="endDate" header="End Date" [sortable]="true" [style]="{'width':'90px'}">
+                      <ng-template let-row="rowData" pTemplate="body">
+                        {{row.endDate | date: 'MM/dd/yyyy'}}
+                      </ng-template>
+                    </p-column>
+                    <p-column field="status" header="Status" [sortable]="true"></p-column>
+                  </p-dataTable>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-dialog>
+
+
+
+        <p-dialog [(visible)]="showDemographicsDialog" modal="true" resizable="false" height="auto" width="1000" responsive="true">
+            <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal;">
+              <i class="fa fa-info-circle fg-primary"></i> Demographics
+            </p-header>
+            <div class="container-fluid">
+              <div class="row ">
+                <div class="container-fluid col-xs-6 ">
+                  <div class="row authDetail-labelTextbox">
+                    <span class="label-authDetails col-xs-12">Physical Address:</span>
+                  </div>
+        
+                  <div style="margin-left: 4px;">
+                    <table class="referralSourceModalTable">
+                        <tr>
+                          <td >
+                            <span>Address 1:</span>
+                          </td>
+                          <td >
+                            <span>{{demographicsData.paAddress1}}</span>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Address 2:</span>
+                            </td>
+                            <td >
+                              <span>{{demographicsData.paAddress2}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>City:</span>
+                            </td>
+                            <td >
+                              <span>{{demographicsData.paCity}}</span>
+                            </td>
+                            <td >
+                              <span>State:</span>
+                            </td>
+                            <td >
+                              <span>{{demographicsData.paState}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>County:</span>
+                            </td>
+                            <td >
+                              <span>{{demographicsData.paCounty}}</span>
+                            </td>
+                            <td >
+                              <span>Zip:</span>
+                            </td>
+                            <td >
+                              <span>{{demographicsData.paZip}}</span>
+                            </td>
+                        </tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            <td >
+                              <span class="label-authDetails">Phone:</span>
+                            </td>
+                            <td >
+                              <span>{{demographicsData.phone}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span class="label-authDetails">Alternate Phone:</span>
+                            </td>
+                            <td >
+                              <span>{{demographicsData.alternatePhone}}</span>
+                            </td>
+                        </tr>
+                      </table>
+                  </div>
+                </div>
+        
+                <div class="container-fluid  col-xs-6">
+                  <div class="row authDetail-labelTextbox">
+                    <span class="label-authDetails col-xs-12">Mailing Address:</span>
+                  </div>
+                  <div style="margin-left: 4px;">
+                    <table class="referralSourceModalTable">
+                        <tr>
+                          <td >
+                            <span>Address 1:</span>
+                          </td>
+                          <td >
+                            <span>{{demographicsData.maAddress1}}</span>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Address 2:</span>
+                            </td>
+                            <td >
+                              <span>{{demographicsData.maAddress2}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>City:</span>
+                            </td>
+                            <td >
+                              <span>{{demographicsData.maCity}}</span>
+                            </td>
+                            <td >
+                              <span>State:</span>
+                            </td>
+                            <td >
+                              <span>{{demographicsData.maState}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>County:</span>
+                            </td>
+                            <td >
+                              <span>{{demographicsData.maCounty}}</span>
+                            </td>
+                            <td >
+                              <span>Zip:</span>
+                            </td>
+                            <td >
+                              <span>{{demographicsData.maZip}}</span>
+                            </td>
+                        </tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            <td >
+                              <span class="label-authDetails">Alternate Contact:</span>
+                            </td>
+                            <td >
+                              <span>{{demographicsData.alternateContact}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span class="label-authDetails">Alternate Contact Phone:</span>
+                            </td>
+                            <td >
+                              <span>{{demographicsData.alternateContactPhone}}</span>
+                            </td>
+                        </tr>
+                      </table>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="row ">
+                <div class="pull-right">
+                  <a href="#" onClick="return false;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+          </p-dialog>
+        
+          <p-dialog [(visible)]="showDiagnosisDialog" modal="true" resizable="false" height="auto" width="700" responsive="true">
+            <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal;">
+              <i class="fa fa-info-circle fg-primary"></i> Diagnosis
+            </p-header>
+            <div class="container-fluid">
+              <div class="row ">
+                <div class="container-fluid col-xs-12 ">
+                  <div style="margin-left: 4px;">
+                    <table class="referralSourceModalTable">
+                      <tr>
+                        <td>
+                          <span>1st Diagnosis:</span>
+                        </td>
+                        <td>
+                          <span>{{diagnosisData.diag1Code}}</span>
+                        </td>
+                        <td>
+                          <span>{{diagnosisData.diag1Text}}</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span>2nd Diagnosis:</span>
+                        </td>
+                        <td>
+                          <span>{{diagnosisData.diag2Code}}</span>
+                        </td>
+                        <td>
+                          <span>{{diagnosisData.diag2Text}}</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span>3rd Diagnosis:</span>
+                        </td>
+                        <td>
+                          <span>{{diagnosisData.diag3Code}}</span>
+                        </td>
+                        <td>
+                          <span>{{diagnosisData.diag3Text}}</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span>4th Diagnosis:</span>
+                        </td>
+                        <td>
+                          <span>{{diagnosisData.diag4Code}}</span>
+                        </td>
+                        <td>
+                          <span>{{diagnosisData.diag4Text}}</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span>5th Diagnosis:</span>
+                        </td>
+                        <td>
+                          <span>{{diagnosisData.diag5Code}}</span>
+                        </td>
+                        <td>
+                          <span>{{diagnosisData.diag5Text}}</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span>6th Diagnosis:</span>
+                        </td>
+                        <td>
+                          <span>{{diagnosisData.diag6Code}}</span>
+                        </td>
+                        <td>
+                          <span>{{diagnosisData.diag6Text}}</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="row ">
+                <div class="pull-right">
+                  <a href="#" onClick="return false;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+          </p-dialog>
+        
+          <p-dialog [(visible)]="showReferralSourceDialog" modal="true" resizable="false" height="auto" width="700" responsive="true">
+            <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal;">
+              <i class="fa fa-info-circle fg-primary"></i> Referral Source
+            </p-header>
+            <div class="container-fluid">
+              <div class="row ">
+                <div class="container-fluid col-xs-12 ">
+                  <div style="margin-left: 4px;">
+                    <table class="referralSourceModalTable">
+                        <tr>
+                          <td >
+                            <span>NPI:</span>
+                          </td>
+                          <td >
+                            <span>{{referralSourceData.npi}}</span>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Referral Type:</span>
+                            </td>
+                            <td >
+                              <span>{{referralSourceData.referralType}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Business Name:</span>
+                            </td>
+                            <td >
+                              <span>{{referralSourceData.businessName}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Address 1:</span>
+                            </td>
+                            <td >
+                              <span>{{referralSourceData.address1}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Address 2:</span>
+                            </td>
+                            <td >
+                              <span>{{referralSourceData.Address2}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>City:</span>
+                            </td>
+                            <td >
+                              <span>{{referralSourceData.city}}</span>
+                            </td>
+                            <td >
+                              <span>State:</span>
+                            </td>
+                            <td >
+                              <span>{{referralSourceData.state}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>County:</span>
+                            </td>
+                            <td >
+                              <span>{{referralSourceData.county}}</span>
+                            </td>
+                            <td >
+                              <span>Zip:</span>
+                            </td>
+                            <td >
+                              <span>{{referralSourceData.zip}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Phone:</span>
+                            </td>
+                            <td >
+                              <span>{{referralSourceData.phone}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Fax:</span>
+                            </td>
+                            <td >
+                              <span>{{referralSourceData.fax}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Contact Name:</span>
+                            </td>
+                            <td >
+                              <span>{{referralSourceData.contactName}}</span>
+                            </td>
+                        </tr>
+                      </table>
+                  </div>
+                </div>
+              </div>
+              <div class="row ">
+                <div class="pull-right">
+                  <a href="#" onClick="return false;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+          </p-dialog>
+        
+          <p-dialog [(visible)]="showOrderingPhysicianDialog" modal="true" resizable="false" height="auto" width="700" responsive="true">
+            <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal;">
+              <i class="fa fa-info-circle fg-primary"></i> Ordering Physician
+            </p-header>
+            <div class="container-fluid">
+              <div class="row ">
+        
+                <div class="container-fluid col-xs-12 ">
+                  <div style="margin-left: 4px;">
+                    <table class="referralSourceModalTable">
+                        <tr>
+                          <td >
+                            <span>NPI:</span>
+                          </td>
+                          <td >
+                            <span>{{orderingPhysicianData.npi}}</span>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Physician:</span>
+                            </td>
+                            <td >
+                              <span>{{orderingPhysicianData.physician}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Business Name:</span>
+                            </td>
+                            <td >
+                              <span>{{orderingPhysicianData.businessName}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Address 1:</span>
+                            </td>
+                            <td >
+                              <span>{{orderingPhysicianData.address1}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Address 2:</span>
+                            </td>
+                            <td >
+                              <span>{{orderingPhysicianData.Address2}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>City:</span>
+                            </td>
+                            <td >
+                              <span>{{orderingPhysicianData.city}}</span>
+                            </td>
+                            <td >
+                              <span>State:</span>
+                            </td>
+                            <td >
+                              <span>{{orderingPhysicianData.state}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>County:</span>
+                            </td>
+                            <td >
+                              <span>{{orderingPhysicianData.county}}</span>
+                            </td>
+                            <td >
+                              <span>Zip:</span>
+                            </td>
+                            <td >
+                              <span>{{orderingPhysicianData.zip}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Phone:</span>
+                            </td>
+                            <td >
+                              <span>{{orderingPhysicianData.phone}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Fax:</span>
+                            </td>
+                            <td >
+                              <span>{{orderingPhysicianData.fax}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Contact Name:</span>
+                            </td>
+                            <td >
+                              <span>{{orderingPhysicianData.contactName}}</span>
+                            </td>
+                        </tr>
+                      </table>
+                  </div>
+                </div>
+              </div>
+              <div class="row ">
+                <div class="pull-right">
+                  <a href="#" onClick="return false;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+          </p-dialog>
+        
+          <p-dialog [(visible)]="showDMEProviderDialog" modal="true" resizable="false" height="auto" width="700" responsive="true">
+            <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal;">
+              <i class="fa fa-info-circle fg-primary"></i> DME Provider
+            </p-header>
+            <div class="container-fluid">
+              <div class="row ">
+        
+                <div class="container-fluid col-xs-12 ">
+                  <div style="margin-left: 4px;">
+                    <table class="referralSourceModalTable">
+                        <tr>
+                          <td >
+                            <span>NPI:</span>
+                          </td>
+                          <td >
+                            <span>{{dmeProviderData.npi}}</span>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Physician:</span>
+                            </td>
+                            <td >
+                              <span>{{dmeProviderData.physician}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Business Name:</span>
+                            </td>
+                            <td >
+                              <span>{{dmeProviderData.businessName}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Address 1:</span>
+                            </td>
+                            <td >
+                              <span>{{dmeProviderData.address1}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Address 2:</span>
+                            </td>
+                            <td >
+                              <span>{{dmeProviderData.Address2}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>City:</span>
+                            </td>
+                            <td >
+                              <span>{{dmeProviderData.city}}</span>
+                            </td>
+                            <td >
+                              <span>State:</span>
+                            </td>
+                            <td >
+                              <span>{{dmeProviderData.state}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>County:</span>
+                            </td>
+                            <td >
+                              <span>{{dmeProviderData.county}}</span>
+                            </td>
+                            <td >
+                              <span>Zip:</span>
+                            </td>
+                            <td >
+                              <span>{{dmeProviderData.zip}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Phone:</span>
+                            </td>
+                            <td >
+                              <span>{{dmeProviderData.phone}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Fax:</span>
+                            </td>
+                            <td >
+                              <span>{{dmeProviderData.fax}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                              <span>Contact Name:</span>
+                            </td>
+                            <td >
+                              <span>{{dmeProviderData.contactName}}</span>
+                            </td>
+                        </tr>
+                      </table>
+                  </div>
+                </div>
+              </div>
+              <div class="row ">
+                <div class="pull-right">
+                  <a href="#" onClick="return false;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+          </p-dialog>
+
+
+
+          <p-dialog [(visible)]="showSpecialInstructionsDialog" modal="true" resizable="false" height="auto" width="900" responsive="true">
+              <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal;">
+                <i class="fa fa-info-circle fg-primary"></i> Special Instructions
+              </p-header>
+              <div class="container-fluid">
+                <div class="row ">
+                  <div class="container-fluid col-xs-12  pre-scrollable">
+                    <div style="margin-left: 4px;">
+                      {{ds.specialInstructionsData}}
+                    </div>
+                  </div>
+                </div>
+                <div class="row pull-right">
+                  <div class="specialInstructionsPencilDiv">
+                    <a href="#" onClick="return false;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                  </div>
+                </div>
+              </div>
+            </p-dialog>
+
+
+
+  <header>
+    <span class="widget-icon"> 
+        <i class="fa fa-list"></i> 
+    </span>
+
+    <h2 *ngIf="ds.selectedRecordType == 1; else other_heading">Auth Details </h2>
+    <ng-template #other_heading>
+      <h2>Request Details </h2>
+    </ng-template>
+  </header>
+  <div>
+    <div class="widget-body no-padding">
+      <!-- widget content -->
+      <div class="component-authDetails">
+        <!-- top menu  -->
+        <div class="container-fluid">
+          <p-splitButton label="Document" class="ui-button-secondary" [model]="items" styleClass="ui-button-secondary"></p-splitButton>
+          <button pButton type="button" label="Cancel Request" class="ui-button-secondary" *ngIf="ds.selectedRecordType == 2"></button>
+          <button pButton type="button" label="Queue" class="ui-button-secondary" *ngIf="ds.selectedRecordType == 1"></button>
+          <button pButton type="button" label="Split Auth" class="ui-button-secondary" *ngIf="ds.selectedRecordType == 1"></button>
+          <button pButton type="button" label="Member History" (click)="setShowMemberHistoryDialog()" class="ui-button-secondary"></button>
+          <hr class="hrNoPadding" />
+        </div>
+
+        <!-- sub menu -->
+        <div class="container-fluid" style="margin-left: 10px;">
+          <ul class="nav nav-pills">
+            <li><a (click)="setShowDemographicsDialog()">Demographics</a></li>
+            <li><a (click)="setShowDiagnosisDialog()">Diagnosis</a></li>
+            <li><a (click)="setShowReferralSourceDialog()">Referral Source</a></li>
+            <li><a (click)="setShowOrderingPhysicianDialog()">Ordering Physician</a></li>
+            <li><a (click)="setShowDMEProviderDialog()">DME Provider</a></li>
+            <li>
+              <a (click)="setShowSpecialInstructionsDialog()">Special Instructions<span *ngIf="specialInstructionsData.length > 0">&nbsp;*</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- RequestApproval block -->
+        <div class="container-fluid well requestAuthWell">
+          <div class="row">
+            <div class="col-sm-4 pull-left">
+              <table class="authDetailTable">
+                <tr>
+                  <td>
+                    <span *ngIf="ds.selectedRecordType == 1; else other_viewType" class="largeLabel-authDetails">Authorization:</span>
+                    <ng-template #other_viewType>
+                      <span class="largeLabel-authDetails">Request:</span>
+                    </ng-template>
+                  </td>
+                  <td>
+                    <span class="largeTextData-authDetails">{{ds.requestApprovalData.authNumber}}&nbsp;&nbsp; <a (click)="setShowAuthNotesDialog()" *ngIf="ds.selectedRecordType==1"><i class="fa fa-sticky-note-o" aria-hidden="true"></i></a></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="label-authDetails">Start Date:</span>
+                  </td>
+                  <td>
+                    <span class="textData-authDetails">{{ds.requestApprovalData.startDate | date: 'MM/dd/yyyy H:mm a'}}</span>
+
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="label-authDetails ">Creation Date:</span>
+                  </td>
+                  <td>
+                    <span class="textData-authDetails ">{{ds.requestApprovalData.creationDate | date: 'MM/dd/yyyy H:mm a'}}</span>
+
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span class="label-authDetails">Urgency:</span>
+                  </td>
+                  <td>
+                    <span class="textData-authDetails">{{ds.requestApprovalData.urgency}}</span>
+                  </td>
+                </tr>
+
+              </table>
+            </div>
+
+            <div class="col-sm-4 pull-right">
+              <div class="row">
+                <div class="pull-left">
+                  <table class="authDetailTable">
+                    <tr>
+                      <td>
+                       <!--  <span class="largeLabel-authDetails">{{ds.requestApprovalData.authStatusType}}:</span> -->
+                        <span class="largeLabel-authDetails">Status:</span>
+                      </td>
+                      <td>
+                        <span class="largeTextData-authDetails">{{ds.requestApprovalData.authStatus}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="label-authDetails ">Effective Dates:</span>
+                      </td>
+                      <td>
+                        <span class="textData-authDetails " *ngIf="ds.requestApprovalData.effectiveFromDate">{{ds.requestApprovalData.effectiveFromDate | date: 'MM/dd/yyyy'}}-{{ds.requestApprovalData.effectiveToDate | date: 'MM/dd/yyyy'}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="label-authDetails ">Ordering Physician:</span>
+                      </td>
+                      <td>
+                        <span class="textData-authDetails ">{{ds.requestApprovalData.orderingPhysician}}</span>
+
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <span class="label-authDetails ">Referral Source:</span>
+                      </td>
+                      <td>
+                        <span class="textData-authDetails">{{ds.requestApprovalData.referralSource}}</span>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2">
+                        <span class="label-authDetails lineHeight-AuthDetails">Member Ht:</span>
+                        <span class="lineHeight-AuthDetails">{{ds.requestApprovalData.memberHt}}</span>
+                        <span class="label-authDetails lineHeight-AuthDetails">Wt:</span>
+                        <span class="lineHeight-AuthDetails">{{ds.requestApprovalData.memberWt}}</span>
+                      </td>
+
+                    </tr>
+                  </table>
+                </div>
+
+                <div class="requestStatusEditIcon pull-right">
+                  <a href="#" onClick="return false;"><i class="fa fa-pencil align-baseline" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- end row -->
+
+        </div>
+      </div>
+      <!-- end widget conent: -->
+    </div>
+  </div>
+</sa-widget>

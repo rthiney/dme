@@ -1,0 +1,327 @@
+<!-- <sa-widget color="blueDark" [colorbutton]="false" [editbutton]="false" [deletebutton]="false" [custombutton]="false"> -->
+<sa-widget *ngIf="showMe" name="dme-products-widget" color="blueDark" colorbutton editbutton deletebutton sortable>
+
+    <p-dialog [(visible)]="showProductNotesDialog" modal="true" resizable="false" height="auto" width="900" responsive="true">
+        <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal;">
+          <i class="fa fa-info-circle fg-primary"></i> Product Notes
+        </p-header>
+        <div class="container-fluid">
+          <div class="row ">
+            <div class="container-fluid col-xs-12 pre-scrollable">
+              <div style="margin-left: 4px;">
+                  <!-- List of notes: -->
+                  <div *ngFor='let obj of productNotesGridData'>
+                    <div class="singleNoteContainerDiv">
+                      <div class="row authDetail-labelTextbox">
+                          <span class="label-authDetails" >Note Type:  &nbsp;</span>
+                          <span class="textData-authDetails largerNoteTypeFont" >{{obj.noteTypeText}}</span>
+                      </div>
+                      <div class="row authDetail-labelTextbox">
+                        <span class="textData-authDetails" >{{obj.creator}} &nbsp; &nbsp; </span>
+                        <span class="textData-authDetails " >{{obj.createdDate | date: 'MM/dd/yyyy H:mm a'}}</span>
+                      </div>
+                      <div class="row authDetail-labelTextbox">
+                          <div class="textData-authDetails " >{{obj.noteText}}</div>
+                      </div>
+                      <hr class="hrNoPadding" />
+                    </div>
+                  </div>
+    
+                  <!-- Add a note: -->
+                  <div class = "container-fluid well input-group ">
+                    <div class="row authDetail-labelTextbox ">
+                      <select [(ngModel)]="productNoteType" (ngModelChange)="updateProductNoteType()" class="form-control form-control-sm" name="productNoteType"  style="width: 150px;">
+                          <option *ngFor="let obj of productNoteTypeLookup" [value]="obj.key">{{obj.value}}</option>
+                      </select>
+                    </div>
+                    <div class="row authDetail-labelTextbox ">
+                      <textarea pInputTextarea [(ngModel)]="productNote.noteText" style="width: 800px; height: 100px;"></textarea>
+                    </div>
+                    <div class="row ">
+                        <button pButton type="button" label="Add Note" class="ui-button-primary"></button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-dialog>
+
+
+	<p-dialog [(visible)]="showProductDetailsDialog" modal="true" resizable="false" height="auto" width="700" responsive="true">
+      <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal;">
+        <i class="fa fa-info-circle fg-primary"></i> Product Line Details
+      </p-header>
+      <div class="container-fluid">
+        <div class="row ">
+          <div class="container-fluid col-xs-6 ">
+            <div style="margin-left: 4px;">
+              <div class="row authDetail-labelTextbox">
+                <span class="col-xs-4">Auth Created: </span>
+                <span class="col-xs-8">{{productLineDetailsData.authCreated  | date: 'MM/dd/yyyy H:mm a'}}</span>
+              </div>
+              <div class="row authDetail-labelTextbox">
+                <span class="col-xs-4">Auth No.: </span>
+                <span class="col-xs-8">{{productLineDetailsData.authNo}}</span>
+              </div>
+              <div class="row authDetail-labelTextbox">
+                <span class="col-xs-4">Specialty: </span>
+                <span class="col-xs-8">{{productLineDetailsData.specialty}}</span>
+              </div>
+              <div class="row authDetail-labelTextbox">
+                <span class="col-xs-4">HCPCS: </span>
+                <span class="col-xs-8">{{productLineDetailsData.hcpc}}</span>
+              </div>
+              <div class="row authDetail-labelTextbox">
+                <span class="col-xs-4">Mod: </span>
+                <span class="col-xs-8">{{productLineDetailsData.mod}}</span>
+              </div>
+              <div class="row authDetail-labelTextbox">
+                <span class="col-xs-4">Description: </span>
+                <span class="col-xs-8">{{productLineDetailsData.description}}</span>
+              </div>
+              <div class="row authDetail-labelTextbox">
+                <span class="col-xs-4">Req. Units: </span>
+                <span class="col-xs-8">{{productLineDetailsData.reqUnits}}</span>
+              </div>
+              <div class="row authDetail-labelTextbox">
+                <span class="col-xs-4">Allowed Units: </span>
+                <span class="col-xs-8">{{productLineDetailsData.allowedUnits}}</span>
+              </div>
+              <div class="row authDetail-labelTextbox">
+                <span class="col-xs-4">U/M: </span>
+                <span class="col-xs-8">{{productLineDetailsData.um}}</span>
+              </div>
+              <div class="row authDetail-labelTextbox">
+                <span class="col-xs-4">Start Date: </span>
+                <span class="col-xs-8">{{productLineDetailsData.startDate  | date: 'MM/dd/yyyy'}}</span>
+              </div>
+              <div class="row authDetail-labelTextbox">
+                <span class="col-xs-4">End Date: </span>
+                <span class="col-xs-8">{{productLineDetailsData.endDate | date: 'MM/dd/yyyy'}}</span>
+              </div>						
+            </div>
+          </div>
+  
+  
+          <div class="container-fluid col-xs-6 ">
+              <div style="margin-left: 4px;">							
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Status: </span>
+                  <span class="col-xs-8">{{productLineDetailsData.status}}</span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Pending Reason: </span>
+                  <span class="col-xs-8">{{productLineDetailsData.pendingReason}}</span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Date Approved: </span>
+                  <span class="col-xs-8">{{productLineDetailsData.dateApproved | date: 'MM/dd/yyyy'}}</span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Date Denied: </span>
+                  <span class="col-xs-8">{{productLineDetailsData.dateDenied | date: 'MM/dd/yyyy'}}</span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Denied Reason: </span>
+                  <span class="col-xs-8">{{productLineDetailsData.deniedReason}}</span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Date Canceled: </span>
+                  <span class="col-xs-8">{{productLineDetailsData.dateCanceled | date: 'MM/dd/yyyy'}}</span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Canceled Reason: </span>
+                  <span class="col-xs-8">{{productLineDetailsData.canceledReason}}</span>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="row productLineDetailsLastRow">
+          <div class="container-fluid col-xs-12" >
+            <div class="row authDetail-labelTextbox">
+              <span class="col-xs-3">DME Provider Note: </span>
+              <span class="col-xs-9">{{productLineDetailsData.dmeProviderNote}}</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row ">
+          <div class="pull-right">
+            <a href="#" onClick="return false;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            <a href="#" onClick="return false;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </p-dialog>
+
+
+
+    <p-dialog [(visible)]="showProductDetailsAddNewDialog" modal="true" resizable="false" height="auto" width="700" responsive="true">
+        <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal;">
+          <i class="fa fa-info-circle fg-primary"></i> Add New Product Line Details
+        </p-header>
+        <div class="container-fluid">
+          <div class="row ">
+            <div class="container-fluid col-xs-12 ">
+              <div style="margin-left: 4px;">
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Auth Created: </span>
+                  <span class="col-xs-8"><input type="text" width="300" />   </span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Auth No.: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Specialty: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">HCPCS: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Mod: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Description: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Req. Units: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Allowed Units: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">U/M: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Start Date: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">End Date: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Status: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Pending Reason: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Date Approved: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Date Denied: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Denied Reason: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Date Canceled: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">Canceled Reason: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+                <div class="row authDetail-labelTextbox">
+                  <span class="col-xs-4">DME Provider Note: </span>
+                  <span class="col-xs-8"><input type="text" width="300" /></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row ">
+            <div class="pull-right">
+              <a href="#" onClick="return false;"><i class="fa fa-undo" aria-hidden="true"></i></a>
+              <a href="#" onClick="return false;"><i class="fa fa-save" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </p-dialog>   
+
+  <header>
+    <span class="widget-icon"> 
+                <i class="fa fa-list"></i> 
+          </span>
+    <h2>DME Product </h2>
+  </header>
+  <div>
+    <!-- widget content -->
+    <div class="widget-body no-padding">
+      <div class="component-authDetails">
+        <div class="container-fluid well">
+          <!-- DME Product grid -->
+          <div>
+            <a (click)="setShowProductDetailsAddNewDialog()"><i class="fa fa-plus-circle largerIcon" aria-hidden="true"></i></a>
+          </div>
+          <div>
+            <p-dataTable [value]="ds.dmeProductGridData" (onRowSelect)="RowSelectProduct($event)" sortMode="single" scrollable="true" selectionMode="single"
+              [(selection)]="selectedProduct" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,15,20,30]">
+
+<!--
+            add field names after we know what they are from the api:
+              	authorizationDetailID: string,
+                specialty: string,    //?
+                hcpcCodeID: string,
+                mod: string,          //?
+                description: string,  //?
+                requestedUnits: number,
+                allowedUnits: number,
+                um: string,           //?
+                effectiveFromDate: Date,
+                effectiveToDate: Date,
+                authorizationDetailStatusName: string,
+                pendingReasonName: string
+
+
+-->
+              <p-column header="Specialty">FIND</p-column>
+              <p-column field="hcpcCodeID" header="HCPCS" [style]="{'width':'100px'}"></p-column>
+              <p-column header="Mod" [style]="{'width':'50px'}">FIND</p-column>
+              <p-column header="Description">FIND</p-column>
+              <p-column field="requestedUnits" header="Req Units" [style]="{'width':'70px'}"></p-column>
+              <p-column field="allowedUnits" header="Allowed Units" [style]="{'width':'70px'}"></p-column>
+
+              <p-column  header="U/M" [style]="{'width':'80px'}">FIND</p-column>
+              <p-column field="effectiveFromDate" header="Start Date" [style]="{'width':'90px'}">
+                <ng-template let-row="rowData" pTemplate="body">
+                  {{row.effectiveFromDate | date: 'MM/dd/yyyy'}}
+                </ng-template>
+              </p-column>
+              <p-column field="effectiveToDate" header="End Date" [style]="{'width':'90px'}">
+                <ng-template let-row="rowData" pTemplate="body">
+                  {{row.effectiveToDate | date: 'MM/dd/yyyy'}}
+                </ng-template>
+              </p-column>
+              <p-column field="authorizationDetailStatusName" header="Status"></p-column>
+              <p-column field="pendingReasonName" header="Pending Reason"></p-column>
+              <p-column header="" [style]="{'width':'50px'}" *ngIf="ds.selectedRecordType == 1">
+                <ng-template let-row="rowData" pTemplate="body">
+                  <div class="row text-center">
+                    <span class="text-center">
+                      <a (click)="setShowProductNotesDialog($event)"><i class="fa fa-sticky-note-o" aria-hidden="true"></i></a>
+                    </span>
+                  </div>
+                </ng-template>
+              </p-column>
+            </p-dataTable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</sa-widget>

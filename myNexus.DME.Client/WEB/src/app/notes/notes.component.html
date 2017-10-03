@@ -1,0 +1,58 @@
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ui-widget-header" style="padding:6px 10px 6px 10px;border-bottom: 0 none" >
+          <i class="fa fa-search" style="margin:4px 4px 4px 0"></i>
+          <input #gb type="text" style="box-shadow: none; border:solid 1px #cccccc; color:black; font-weight:normal; border-radius:2px;" pInputText size="30" >
+      </div>
+      <div >
+          <p-dataTable  [value]="notes"  [globalFilter]="gb" styleClass="myTable"  #dt>    
+              <p-column field="CreatedDate" header="Creation Date" [style]="{'width':'15%'}"> 
+                  <ng-template let-row="rowData" pTemplate="body">
+                      <span>{{row.CreatedDate | date: 'MM/dd/yyyy H:mm a'}}</span>
+                  </ng-template>              
+              </p-column>
+              <p-column field="CreatedBy" header="Created By" [style]="{'width':'10%'}"   ></p-column>  
+              <p-column field="Type" header="Type" [style]="{'width':'10%'}"   ></p-column>
+              <p-column field="Note" header="Note" [style]="{'width':'55%'}" >
+                  <ng-template let-row="rowData" pTemplate type="body">                
+                    <div style="width:100%;" (mouseenter)="op.toggle($event)" > 
+                        {{ (row.Note.length>20)? (row.Note | slice:0:100)+'...':(row.Note) }}
+                    </div>                                   
+                  </ng-template>
+              </p-column>    
+              <p-column field="AuthorizationNumber" header="Auth Number" [style]="{'width':'10%'}" ></p-column>   
+            </p-dataTable>
+            <p-overlayPanel [style]="{'width':'500px'}" appendTo="body"  #op>
+                Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.
+            </p-overlayPanel>     
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <div style="margin-top:40px; margin-bottom:6px;">
+          <p-dropdown [options]="types" [(ngModel)]="selectedType" placeholder="Types"></p-dropdown>
+      </div>
+    </div>
+    <div class="col-lg-10"></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+        <textarea [rows]="4" [cols]="201" pInputTextarea ></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+        <div style="margin-top:6px; margin-bottom:6px;">
+          <button pButton type="button" label="Add">Add</button>
+        </div>
+    </div>
+    <div class="col-lg-10">
+    </div>
+  </div>
+</div>

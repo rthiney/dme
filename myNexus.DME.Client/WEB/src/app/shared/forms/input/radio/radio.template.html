@@ -1,0 +1,10 @@
+<div>   
+    <span *ngFor="let radio of radios">
+        <span class="radio-container">
+            <label><input type="radio" 
+                name="{{radio.name}}" 
+                value="{{radio.value}}" 
+                (click)="onClick(radio.value)"/> {{radio.label}}</label>
+        </span>
+    </span>
+<div>

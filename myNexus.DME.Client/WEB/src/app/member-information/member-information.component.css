@@ -1,0 +1,276 @@
+.message {
+    padding-left: 10px;
+}
+
+.no-results-panel{
+    padding: 10px 10px 10px 10px;
+}
+.no-results-body{
+    margin-top: 20px 20px 20px 20px;    
+    border: 1px solid red;
+    color: red;
+}
+
+@media (min-width: 1300px) {
+    .modal-xl {
+      width: 1300px;
+     max-width:1300px;
+    }
+  }
+
+.requestStatusHeading{
+    /* font-weight: bolder; */
+    font-size: 1.5em;
+    /* color: #C04444; */
+    color: #1e5abc;
+    font-family: Verdana, sans-serif;
+
+
+} 
+
+.requestStatusHeadingIcon{
+    font-size: 1.2em;
+    /* color: #1e5abc; */
+    color: #3276b1;
+
+}
+
+.requestStatusHeadingLeft{
+    margin: 0px 0 10px 40px;
+}
+
+.requestStatusHeadingRight{
+    margin: 0px 40px 10px 0px;
+}
+
+.requestsFooterButtonLeft{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.requestsFooterButtonRight{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+.fuelux .wizard ul li{
+    font-size: 1.1em;
+    line-height: .5;
+    height: 30px;
+    vertical-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.rightStepIcon{
+    font-size: 1.2em;
+    margin: 5px 5px;
+}
+
+.stepLi{
+    margin: 0px;
+}
+
+.stepSpan{
+    margin: 0px;
+}
+
+.fuelux .wizard .actions {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    float: right;
+    padding-right: 0px;
+    padding-left: 0px;
+    line-height: 25px;
+    vertical-align: middle;
+    background-color: #eee;
+    border-left: 1px solid #d4d4d4;
+}
+
+.generalTableDiv{
+    margin: 50px 40px 10px 50px;
+}
+
+.generalTable{
+    border-collapse: separate;
+    border-spacing: 5px 5px;
+}
+
+.generalSpecialInstructionsDiv{
+    margin: 0px 40px 10px 80px;
+}
+
+.generalTable td{
+    white-space: nowrap;
+}
+
+.requiredFieldIndicatorFa{
+    color: red;
+    font-size: .8em;
+}
+
+.requiredFieldIndicator{
+    color: red;
+    /* font-size: .8em; */
+}
+
+
+.demographicsDiv{
+    margin: 20px;
+}
+
+.label-requests{
+    font-weight: bolder;
+}
+
+.labelLarge-requests{
+    font-weight: bolder;
+    font-size: 1.1em;
+}
+
+.diagnosisDropdown{
+    width: 500px;
+    padding: 20px;
+    line-height: .8em;
+}
+
+.documentsDiv{
+    min-height: 350px;
+
+}
+
+.diagnosisDiv{
+    margin-left: 250px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.diagnosisModalTable{
+    border-collapse: separate;
+    border-spacing: 5px 5px;
+    white-space: nowrap;
+}
+
+.referralSourceDiv{
+    margin-left: 300px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.referralSourceModalTable{
+    border-collapse: separate;
+    border-spacing: 5px 5px;
+    white-space: nowrap;
+}
+
+.referralSourceDiv{
+    margin-left: 300px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.referralSourceModalTable{
+    border-collapse: separate;
+    border-spacing: 5px 5px;
+    white-space: nowrap;
+}
+
+.dmeProviderInternalDiv{
+    margin-left: 250px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.dmeProviderExternalDiv{
+    margin-left: 250px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.dmeProviderModalTable{
+    border-collapse: separate;
+    border-spacing: 5px 5px;
+    white-space: nowrap;
+
+}
+
+.documentsPage1Div{
+    margin-left: 150px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.documentsPage1BottomRow{
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+
+.documentsPage1Table{
+    border-collapse: separate;
+    border-spacing: 25px 5px;
+    white-space: nowrap;
+}
+
+.documentsPage2Div{
+    margin-left: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.productSelectionDiv{
+    margin-left: 350px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 300px;
+}
+
+.productSelectionBottomRow{
+    margin-top: 30px;
+
+}
+
+.fuelux .wizard .actions {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    float: right;
+    padding-right: 0px;
+    padding-left: 0px;
+    line-height: 25px;
+    vertical-align: middle;
+    background-color: #eee;
+    border-left: 1px solid #d4d4d4;
+    bottom: 0;
+}
+
+.stepWidgetButtonsDiv{
+    margin: 10px;
+}
+
+.dmeProviderToggleButtonDiv{
+    margin-bottom: 40px;
+}
+
+.typeAheadBoxStyle{
+    box-shadow: inset 0 1px 0 #d6d6d6 !important;
+    color: #000;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px !important;
+    font-size: 1em;
+    line-height: 1.25;
+}
+
+select:required:invalid {
+    color: gray;
+  }
+option[value=""][disabled] {
+    display: none;
+  }
+option {
+    color: black;
+  }
+  

@@ -1,0 +1,29 @@
+<div class="main-container" (keyup.enter)="search()">
+    <div class="alert alert-danger" role="alert" *ngFor="let message of messages">
+        <strong>{{ message }}</strong>
+    </div>
+    <br>
+    <label class="control-label">Search By:</label>
+    <span *ngFor="let st of searchTypes">
+        <span class="radio-container">
+            <label>
+                <input type="radio" name="st.name" [value]="st.value" [(ngModel)]="selectedSearchType" (ngModelChange)="validate('searchType')"/> 
+                {{st.label}}
+            </label>
+        </span>
+    </span>
+    <div class="search">
+        <select class="form-control" [(ngModel)]="selectedAccount" (ngModelChange)="validate('account'); setAccountId()">
+            <option *ngFor="let a of accounts" [value]="a.id">{{a.name}}</option>
+        </select>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="searchValue" (ngModelChange)="validate('searchValue')" placeholder="Search">
+            <div class="input-group-btn">
+                <button class="btn btn-default" (click)="search()">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

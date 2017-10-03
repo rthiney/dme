@@ -1,0 +1,35 @@
+.black {
+    color: #111312;
+  }
+
+.green {
+    color: #21B12F;
+  }
+
+.yellow {
+    color: #BFC423;
+  }
+
+.red {
+    color: #F02427;
+  }
+
+.center {
+    text-align: center;
+    width: 100px;
+  }
+
+.column-small {
+    width: 100px;
+  }
+
+.column-big {
+  width: 210px;
+}
+
+.refresh-small {
+  color: rgba(255, 255, 255, 0.33);    
+  font-size: 2em;
+  cursor: pointer;
+}
+

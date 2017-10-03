@@ -1,0 +1,125 @@
+<sa-widget name="member-details-widget" color="blueDark" colorbutton editbutton deletebutton fullscreenbutton sortable>
+
+    <p-dialog [(visible)]="showMemberDetailsNotesDialog" modal="true" resizable="false" height="auto" width="900" responsive="true">
+        <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal;">
+            <i class="fa fa-info-circle fg-primary"></i> Member Notes
+        </p-header>
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="container-fluid col-xs-12 pre-scrollable">
+                    <div style="margin-left: 4px;">
+
+                        <!-- List of notes: -->
+                        <div *ngFor='let obj of memberDetailsNotesGridData'>
+                            <div class="singleNoteContainerDiv">
+                                <div class="row authDetail-labelTextbox">
+                                    <span class="label-authDetails">Note Type:  &nbsp;</span>
+                                    <span class="textData-authDetails largerNoteTypeFont">{{obj.noteTypeText}}</span>
+                                </div>
+                                <div class="row authDetail-labelTextbox">
+                                    <span class="textData-authDetails">{{obj.creator}} &nbsp; &nbsp; </span>
+                                    <span class="textData-authDetails ">{{obj.createdDate | date: 'MM/dd/yyyy H:mm a'}}</span>
+                                </div>
+                                <div class="row authDetail-labelTextbox">
+                                    <div class="textData-authDetails ">{{obj.noteText}}</div>
+                                </div>
+                                <hr class="hrNoPadding" />
+                            </div>
+                        </div>
+
+                        <!-- Add a note: -->
+                        <div class="container-fluid well input-group ">
+                            <div class="row authDetail-labelTextbox ">
+
+                                <!-- <p-dropdown [options]="productNoteTypeLookup" [(ngModel)]="productNoteType"></p-dropdown> -->
+
+                                <select [(ngModel)]="memberDetailNoteType.key" class="form-control form-control-sm" name="memberDetailNoteType" style="width: 150px;">
+                                                <option *ngFor="let obj of memberDetailNoteTypeLookup" [value]="obj.key">{{obj.value}}</option>
+                                        </select>
+
+                            </div>
+                            <div class="row authDetail-labelTextbox ">
+                                <textarea pInputTextarea [(ngModel)]="memberDetailNote.noteText" style="width: 800px; height: 100px;"></textarea>
+                            </div>
+                            <div class="row ">
+                                <button pButton type="button" label="Add Note" class="ui-button-primary"></button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-dialog>
+
+    <header>
+        <span class="widget-icon"><i class="fa fa-user"></i></span>
+        <h2>Member Details</h2>
+    </header>
+
+    <div *ngIf="showVerticle == false; else other_content" class="widget-body" style="min-height:0%">
+        <div *ngIf="showMe" class="details-parent">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="details-child col-sm col-md col-lg-2 col-xl-2">
+                        <!-- <label><strong>Member:</strong></label> -->
+                        <span>{{member.FirstName}} {{member.LastName}}</span>
+                        <span *ngIf="ds.selectedRecordType == 1"><a (click)="setShowMemberDetailsNotesDialog()"><i class="fa fa-sticky-note-o" aria-hidden="true"></i></a></span>
+                    </div>
+                    <div class="details-child col-sm col-md col-lg-2 col-xl-2">
+                        <label><strong>Plan:</strong></label>
+                        <span>{{member.AccountName}}</span>
+                    </div>
+                    <div class="details-child col-sm col-md col-lg-2 col-xl-2">
+                        <label><strong>Member ID:</strong></label>
+                        <span>{{member.SubscriberNumber}}</span>
+                    </div>
+                    <div class="details-child col-sm col-md col-lg-2 col-xl-2">
+                        <label><strong>DOB:</strong></label>
+                        <span>{{member.DateOfBirth  | date:'shortDate'}}</span>
+                    </div>
+                    <div class="details-child col-sm col-md col-lg-4 col-xl-4">
+                        <label><strong>Eligibility:</strong></label>
+                        <span>{{member.EffectiveBeginDate  | date:'shortDate'}} - {{member.EffectiveEndDate  | date:'shortDate'}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--     //else if showVerticle = true show the following: -->
+    <ng-template #other_content>
+        <div class="widget-body" style="min-height:0%">
+            <div *ngIf="showMe" class="details-parent">
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="details-child col-sm col-md col-lg-12 col-xl-12">
+                            <label><strong>Member:</strong></label>
+                            <span>{{member.FirstName}} {{member.LastName}}</span>&nbsp;&nbsp;
+                            <span *ngIf="ds.selectedRecordType == 1"><a (click)="setShowMemberDetailsNotesDialog()"><i class="fa fa-sticky-note-o" aria-hidden="true"></i></a></span>
+                        </div>
+                        <div class="details-child col-sm col-md col-lg-12 col-xl-12">
+                            <label><strong>Plan:</strong></label>
+                            <span>{{member.AccountName}}</span>
+                        </div>
+                        <div class="details-child col-sm col-md col-lg-12 col-xl-12">
+                            <label><strong>Member ID:</strong></label>
+                            <span>{{member.SubscriberNumber}}</span>
+                        </div>
+                        <div class="details-child col-sm col-md col-lg-12 col-xl-12">
+                            <label><strong>DOB:</strong></label>
+                            <span>{{member.DateOfBirth  | date:'shortDate'}}</span>
+                        </div>
+                        <div class="details-child col-sm col-md col-lg-12 col-xl-12">
+                            <label><strong>Eligibility:</strong></label>
+                            <span>{{member.EffectiveBeginDate  | date:'shortDate'}} - {{member.EffectiveEndDate  | date:'shortDate'}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</sa-widget>

@@ -1,0 +1,12 @@
+:host>>>table {
+    width: 100%;
+    text-align: center;
+}
+
+:host>>>td {
+    max-width: 0px;
+    min-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

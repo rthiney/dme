@@ -1,0 +1,45 @@
+<sa-widget *ngIf="showMe" name="authorizations-widget" color="blueDark" colorbutton editbutton deletebutton sortable>
+    <header>
+        <span class="widget-icon"><i class="fa fa-list"></i></span>
+        <h2>Authorizations</h2>
+    </header>
+    <div class="widget-body">
+        <p-dataTable [value]="data" selectionMode="single" (onRowSelect)="onRowSelect($event)" [(selection)]="ds.selectedRowAuth" #dt>
+            <p-column field="CreatedOn" header="Date" [style]="{'width':'90px'}">
+                <ng-template let-col let-date="rowData" pTemplate="body">
+                    <span>{{date.CreatedOn | date: 'MM/dd/yyyy'}}</span>
+                </ng-template>
+            </p-column>
+            <p-column field="AuthorizationNumber" header="Number" [style]="{'width':'130px'}">
+                <ng-template let-row="rowData" pTemplate type="body">                
+                    {{row.IsLocked == true ? "*" + row.AuthorizationNumber : row.AuthorizationNumber}}
+                 </ng-template>
+            </p-column>
+            <!-- <p-column field="ProviderName" header="DME Provider" [sortable]="true"></p-column> -->
+            <p-column field="ProviderName" header="" [filter]="true" filterMatchMode="in">
+                <ng-template pTemplate="filter" let-col>
+                    <p-multiSelect [options]="providers" defaultLabel="DME Provider" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter">
+                    </p-multiSelect>
+                </ng-template>
+            </p-column>
+            <p-column field="OrderingPhysicianName" header="Ordering Physician"></p-column>
+            <p-column field="UrgencyName" header="" [filter]="true" filterMatchMode="in">
+                <ng-template pTemplate="filter" let-col>
+                    <p-multiSelect [options]="urgencies" defaultLabel="Urgency" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter">
+                    </p-multiSelect>
+                </ng-template>
+            </p-column>
+            <p-column field="QueueName" header="Queue"></p-column>
+            <p-column field="AuthorizationStatusName" header="" [filter]="true" filterMatchMode="in">
+                <ng-template pTemplate="filter" let-col>
+                    <p-multiSelect [options]="statuses" defaultLabel="Satus" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter">
+                    </p-multiSelect>
+                </ng-template>
+            </p-column>
+
+            <!-- See for hidden columns issue https://github.com/primefaces/primeng/issues/3356 
+            <p-column [field]="AuthorizationID" [header]="Id" [style]="{'display' : 'none'}" [hidden]="true"></p-column>
+            -->
+        </p-dataTable>
+    </div>
+</sa-widget>

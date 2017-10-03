@@ -1,0 +1,4 @@
+export enum viewType {
+	auth = 1, 
+	request = 2
+}

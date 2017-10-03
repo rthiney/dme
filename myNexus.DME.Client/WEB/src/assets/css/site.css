@@ -1,0 +1,94 @@
+/*
+ * It is advised not to edit the smartadmin_production.css
+ * as this will override any changes you make in the 
+ * later versions of this theme. 
+ * 
+ * We advise that you use use this CSS to override 
+ * SmartAdmin styles. 
+ * 
+ * Rename the stylesheet to whatever your liking so it will stay
+ * unique to you with each update of SmartAdmin.
+ */
+
+
+/*
+ * INDEX
+ * 
+ * - HTML
+ * - BODY
+ * - CUSTOM STYLES
+ */
+
+.ui-state-active {
+    background-color: #e0e0e0 !important;
+    border-color: #e0e0e0 !important;
+    border-bottom-color: grey !important;
+    color: #000000 !important;
+}
+
+.user-icon {
+    font-size: 20px;
+    color: grey;
+    border-bottom: 1px solid grey;
+    padding: 5px;
+    margin: 5px;
+}
+
+
+/*Owerrides*/
+
+.smart-style-3 #logo-group {
+    /* background-color: #fff !important; */
+    width: 218px !important;
+    border-bottom: 1px solid rgb(253, 105, 1)
+}
+
+.smart-style-3 #logo img {
+    width: 200px;
+    margin-top: -10px;
+    /* padding-top: 5px; */
+}
+
+.smart-style-3 #header {
+    border-bottom: 1px solid rgb(253, 105, 1);
+    background-image: linear-gradient(to right, hsl(0, 0%, 97%), #d67632);
+}
+
+.smart-style-3 .login-info {
+    color: #000;
+    border-bottom: 1px inset rgba(136, 134, 134, 0.67);
+    ;
+}
+
+.smart-style-3 #page-footer {
+    /* 
+    background-color: #f78c40 !important;
+    background-image: -moz-linear-gradient(top, #f78c40, #d67632) !important;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f78c40), to(#d67632)) !important;
+    background-image: -webkit-linear-gradient(top, #f78c40, #d67632) !important;
+    background-image: -o-linear-gradient(top, #f78c40, #d67632) !important;
+    background-image: linear-gradient(to bottom, rgba(212, 139, 97, 0.81), #ca5503) !important; 
+    */
+    height: 20px;
+    padding-bottom: 20px;
+    padding-top: 5px;
+}
+
+.smart-style-3.minified nav>ul>li>ul,
+.smart-style-3.minified nav>ul>li>ul>li>ul>li {
+    background-color: #ffffff
+}
+
+@media (min-width: 1300px) {
+    .col-lg-6 {
+        width: 50% !important;
+        float: left !important;
+    }
+}
+
+@media (max-width: 1400px) {
+    .col-md-12 {
+        width: 100% !important;
+        float: left !important;
+    }
+}
