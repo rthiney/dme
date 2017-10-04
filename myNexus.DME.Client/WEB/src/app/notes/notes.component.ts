@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {NotesService} from './notes.service';
-import { DataTableModule, SharedModule, MultiSelectModule, SliderModule, DropdownModule, CheckboxModule, ButtonModule, DataTable, SelectItem, Tooltip } from 'primeng/primeng';
+//import { DataTableModule, SharedModule, MultiSelectModule, SliderModule, DropdownModule, CheckboxModule, ButtonModule, DataTable, SelectItem, Tooltip, OverlayPanel } from 'primeng/primeng';
+import { DataTable, SelectItem, Tooltip, OverlayPanel } from 'primeng/primeng';
 import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-notes',
@@ -12,14 +14,31 @@ import { DatePipe } from '@angular/common';
 export class NotesComponent implements OnInit {
   
   notes: any[];
-  types: SelectItem[];
+  noteTypes: any[];
   selectedType: any;  
+  selectedNote: any;
+  currentNote: any;
   
   constructor(private notesService: NotesService) { }
 
   ngOnInit() {
     this.notes = this.notesService.getNotes(); 
-    this.types = this.notesService.getTypes();
+    this.notesService.getNoteTypes().subscribe((data) => {
+      this.noteTypes = data.result;
+      console.log(this.noteTypes);
+    });   
+  }
+
+  selectNote(event, note: any, panel: OverlayPanel)
+  {    
+    this.selectedNote = note;
+    panel.toggle(event);
+  }
+
+  saveNote()
+  {
+    console.log(this.selectedType);
+    console.log(this.currentNote);
   }
 
 }

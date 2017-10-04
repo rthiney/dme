@@ -1,7 +1,7 @@
 <!-- <sa-widget color="blueDark" [colorbutton]="false" [editbutton]="false" [deletebutton]="false" [custombutton]="false"> -->
-    <p-dialog [(visible)]="showAuthNotesDialog" modal="true" resizable="false" height="600" width="1300" responsive="true">
+    <p-dialog [(visible)]="showAuthNotesDialog" modal="true" resizable="false" height="600" width="1100" responsive="true">
         <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px;">
-          Auth Notes
+          AUTH: <span class="center" >{{ds.requestApprovalData.authNumber}}</span> 
         </p-header>       
         <app-notes></app-notes>                 
     </p-dialog>

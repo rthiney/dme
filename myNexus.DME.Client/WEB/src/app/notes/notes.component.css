@@ -10,3 +10,22 @@
     width: 200px;
  }
 
+ /* .smart-style-3 .dropdown-menu { 
+     background-color: white; 
+     -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+     -moz-transition: none;
+     -webkit-transition: none;
+
+     opacity: 0;
+     transition:         all 400ms ease;
+     -moz-transition:    all 400ms ease;
+     -webkit-transition: all 400ms ease;
+     -o-transition:      all 400ms ease;
+     -ms-transition:     all 400ms ease;
+     box-shadow: none;
+    } */
+
+.myDropDown {
+    width:200px;
+}

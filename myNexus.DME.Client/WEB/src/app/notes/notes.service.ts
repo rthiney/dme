@@ -1,9 +1,17 @@
+import { BaseHttpService } from './../services/base-http.service';
+import { environment } from './../../environments/environment';
+import { ResponseErrorHandler } from './../errors/response-error-handler';
+import { Observable } from 'rxjs'
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Injectable()
-export class NotesService {
+export class NotesService extends BaseHttpService {
+  
 
-  constructor() { }
+  constructor(http: Http, responseErrorHandler: ResponseErrorHandler) {
+    super(environment.dnaBaseUrl, http, responseErrorHandler);
+   }
       
   notes = [{
     "CreatedDate": "2017-04-15T11:24:14Z",
@@ -20,13 +28,13 @@ export class NotesService {
   }, {
     "CreatedDate": "2016-10-21T22:53:26Z",
     "CreatedBy": "canfosso2",
-    "Type": "Request",
+    "Type": "Authorization",
     "Note": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\nPhasellus in felis. Donec semper sapien a libero. Nam dui.",
     "AuthorizationNumber": "D2017010112343"
   }, {
     "CreatedDate": "2017-07-04T19:18:10Z",
     "CreatedBy": "koldacres3",
-    "Type": "Request",
+    "Type": "Authorization",
     "Note": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",
     "AuthorizationNumber": " D2017010112342"
   }, {
@@ -35,7 +43,22 @@ export class NotesService {
     "Type": "Clinical",
     "Note": "Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
     "AuthorizationNumber": "D2017010112341"
-  }, {
+  }, 
+  {
+    "CreatedDate": "2017-07-09T12:09:16Z",
+    "CreatedBy": "nfirby4",
+    "Type": "Clinical",
+    "Note": "Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+    "AuthorizationNumber": "D2017010112341"
+  },
+  {
+    "CreatedDate": "2017-07-09T12:09:16Z",
+    "CreatedBy": "nfirby4",
+    "Type": "Clinical",
+    "Note": "Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+    "AuthorizationNumber": "D2017010112341"
+  },
+  {
     "CreatedDate": "2017-04-02T17:00:59Z",
     "CreatedBy": "smclorinan5",
     "Type": "Follow-Up",
@@ -43,20 +66,20 @@ export class NotesService {
     "AuthorizationNumber": "D2017010112378"
   }];
  
-  types = [
-    {label: 'Authorization', value: 'Authorization'},
-    {label: 'Request', value: 'Request'},
-    {label: 'Clinical', value: 'Clinical'},
-    {label: 'Follow-Up', value: 'FollowUp'},
-    {label: 'MD Review', value: 'MDReview'}
+  
+  public getNoteTypes(): Observable<any> {    
+    return this.get('api/Lookup/GetAllNoteTypesAsync');
+  } 
+
+  types = [    
+    {text: 'Authorization', id: 'Authorization'},
+    {text: 'Clinical', id: 'Clinical'},
+    {text: 'Follow-Up', id: 'FollowUp'},
+    {text: 'MD Review', id: 'MDReview'}
   ];
 
   getNotes(){
       return this.notes;
-  }
-
-  getTypes(){
-    return this.types;
-  }
+  }  
 
 }
