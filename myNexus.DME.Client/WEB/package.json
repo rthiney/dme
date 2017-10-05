@@ -16,6 +16,8 @@
     "e2e:live": "npm run e2e -- --elementExplorer",
     "e2e": "npm run protractor",
     "lint": "npm run tslint \"src/**/*.ts\"",
+    "goodlint": "node_modules/.bin/goodparts src",    
+    "goodfix": "node_modules/.bin/goodparts src --fix",
     "postversion": "git push && git push --tags",
     "prebuild:dev": "npm run clean:dist",
     "prebuild:prod": "npm run clean:dist",
