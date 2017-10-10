@@ -20,6 +20,9 @@ import {
   import {NotesModule} from '@app/notes/notes.module';
   import {NotesComponent} from '@app/notes/notes.component';
   import { DataService } from '@app/services/data.service';
+  import { DiagnosisComponent } from '@app/requests/diagnosis/diagnosis.component';
+  import { PhonePipe } from '@app/pipes/phone/phone.pipe';
+  import { ZipPipe } from '@app/pipes/zip/zip.pipe';
 
 
 @NgModule({
@@ -50,7 +53,10 @@ import {
   ],
   declarations: [
     MemberInformationComponent,
-    DynamicComponent
+    DynamicComponent,
+    DiagnosisComponent,
+    PhonePipe, 
+    ZipPipe
     
     
   ],

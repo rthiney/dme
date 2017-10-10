@@ -8071,8 +8071,29 @@ div.wijmo-wijmenu .wijmo-wijmenu-child .wijmo-wijmenu-text {
 }
 
 .ui-autocomplete {
-    z-index: 905!important
+/*     z-index: 905!important; */
 }
+
+.ui-autocomplete-panel {
+   /*  z-index: 2147483640!important; */
+}
+
+.ui-inputtext .ui-widget .ui-state-default .ui-corner-all .ui-autocomplete-input{
+   /*  z-index: 10; */
+}
+
+.ui-autocomplete {
+    /* z-index: 905!important; */
+}
+
+
+
+
+
+
+
+
+
 
 .the-price {
     background-color: rgba(220, 220, 220, .17);
@@ -14937,7 +14958,39 @@ img.away {
     font-size: 1em !important;
     color: black !important;
     width: auto !important;
+  /*   z-index:  2147483640; */
 }
+
+.liTypeAheadStyle .ui-autocomplete-panel{
+   /*  z-index: 2147483640 !important; */
+
+}
+
+.ui-autocomplete-items .ui-autocomplete-list{
+   /*  z-index: 2147483640 !important; */
+}
+
+
+
+
+
+
+
+
+
+.ui-autocomplete-panel {
+ /*     z-index: 2147483640;  */
+}
+
+.ui-autocomplete{
+   /*  z-index:1; */
+}
+
+
+
+
+
+
 
 .fuelux .wizard ul li .chevron {
     position: absolute;

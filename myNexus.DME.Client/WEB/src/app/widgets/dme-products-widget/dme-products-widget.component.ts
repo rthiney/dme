@@ -13,6 +13,7 @@ import { ILookupObject } from '@entities/interfaces/i-lookup-object';
 import { Subscription } from "rxjs/Rx";
 import { SmartadminModule } from './../../shared/smartadmin.module';
 import { DataService } from '@app/services/data.service';
+import { UserService } from '@app/shared/user/user.service';
 
 
 @Component({
@@ -31,9 +32,12 @@ export class DmeProductsWidgetComponent implements OnInit {
   public items: MenuItem[];
 
   public ds: DataService;
+  public us: UserService;
 
-public constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService) {
+public constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService, private userService: UserService) {
 	this.ds = dataService;
+	this.us = userService;
+	this.us.setIsUserInternal();
  }
 
   ngOnInit(): void {

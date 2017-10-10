@@ -1,4 +1,4 @@
-<sa-widget *ngIf="showMe" name="requests-widget" color="blueDark" colorbutton editbutton deletebutton sortable>
+<sa-widget *ngIf="showMe && data" name="requests-widget" color="blueDark" colorbutton editbutton deletebutton sortable>
     <header>
         <span class="widget-icon"><i class="fa fa-list"></i></span>
         <h2>Requests</h2>
@@ -31,6 +31,9 @@
                     </p-multiSelect>
                 </ng-template>
             </p-column>
+
+            <p-column header="Specialty"></p-column>
+            <p-column header="Status"></p-column>
 
 
             <!-- See for hidden columns issue https://github.com/primefaces/primeng/issues/3356 

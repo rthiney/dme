@@ -21,6 +21,11 @@ import { DiagnosisService } from '../services/diagnosis.service';
 import { SearchCriteria } from '../member-search-input/search-criteria';
 import { ILookupObject } from '@entities/interfaces/i-lookup-object';
 
+import { DiagnosisComponent } from '@app/requests/diagnosis/diagnosis.component';
+import { PhonePipe } from '@app/pipes/phone/phone.pipe';
+import { ZipPipe } from '@app/pipes/zip/zip.pipe';
+
+
 
 @Component({
   selector: 'member-information',
@@ -224,11 +229,11 @@ export class MemberInformationComponent implements OnInit {
 
 	//diagnosis
 	public diag1: any;
-	public diag2: SelectItem;
-	public diag3: SelectItem;
-	public diag4: SelectItem;
-	public diag5: SelectItem;
-	public diag6: SelectItem;
+	public diag2: any;
+	public diag3: any;
+	public diag4: any;
+	public diag5: any;
+	public diag6: any;
 
 
 	loadDiagnosisLookup() {
@@ -242,13 +247,13 @@ export class MemberInformationComponent implements OnInit {
 
 /*   public country: any;  
   public countries: any[]; */   
-  filteredDiagnosisList: any[];  
-  public filteredDiag1List: any[]; 
-  public filteredDiag2List: any[];
-  public filteredDiag3List: any[];
-  public filteredDiag4List: any[];
-  public filteredDiag5List: any[];
-  public filteredDiag6List: any[];
+  //public filteredDiagnosisList: any[];  
+  public filteredDiag1List: any[] = []; 
+  public filteredDiag2List: any[] = [];
+  public filteredDiag3List: any[] = [];
+  public filteredDiag4List: any[] = [];
+  public filteredDiag5List: any[] = [];
+  public filteredDiag6List: any[] = [];
 
 
 
@@ -269,8 +274,8 @@ export class MemberInformationComponent implements OnInit {
 
   
 
-  filterDiagnosisSingle(event) {
-    let query = event.query;
+  filterDiagnosisSingle(event, diagnosisNumber: number) {
+    let query = String(event.query);    //  period is %2E, causing problems in api 500 server error
     this.diagnosisService.getDiagnosisByContainsCodeOrDescription(query).subscribe(response => {
       console.log(response.result);
       let result = [{description:null}];
@@ -279,7 +284,29 @@ export class MemberInformationComponent implements OnInit {
           result.push({description: e.code + ' ' + e.description});
         }
       });
-      this.filteredDiag1List = result;
+      //filteredDiagnosisList = result;
+
+      switch (diagnosisNumber) {
+        case 1: 
+        this.filteredDiag1List = result; 
+        break;
+        case 2:
+        this.filteredDiag2List = result; 
+        break;
+        case 3: 
+        this.filteredDiag3List = result;  
+        break;
+        case 4:
+        this.filteredDiag4List = result; 
+        break;
+        case 5:
+        this.filteredDiag5List = result;   
+        break;
+        case 6:
+        this.filteredDiag6List = result; 
+        break;
+      };
+
     });
   }
 

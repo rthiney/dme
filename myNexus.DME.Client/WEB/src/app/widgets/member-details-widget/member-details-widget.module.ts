@@ -5,6 +5,7 @@ import { MemberDetailsWidgetComponent } from './member-details-widget.component'
 import { DataTableModule, SharedModule, DialogModule, InputTextareaModule
   , ButtonModule, DropdownModule } from 'primeng/primeng';
 import { DataService } from '@app/services/data.service';
+import { UserService } from '@app/shared/user/user.service';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { DataService } from '@app/services/data.service';
     DropdownModule
   ],
   declarations: [MemberDetailsWidgetComponent],
-  providers: [DataService],
+  providers: [DataService, UserService],
   exports: [MemberDetailsWidgetComponent]
 })
 export class MemberDetailsWidgetModule { }

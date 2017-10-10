@@ -5,6 +5,7 @@ import { Observable } from 'rxjs'
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
+
 @Injectable()
 export class NotesService extends BaseHttpService {
   
@@ -70,16 +71,20 @@ export class NotesService extends BaseHttpService {
   public getNoteTypes(): Observable<any> {    
     return this.get('api/Lookup/GetAllNoteTypesAsync');
   } 
+  
+  public getNotes(endPointUrl: string, parameters: string): Observable<any> {    
+    return this.get('api/AuthorizationNotes/GetAuthorizationNotesByAuthorizationIdAsync' + parameters);
+  } 
+
+  public saveNote(endPointUrl: string, data: any): Observable<any> {    
+    return this.post('api/AuthorizationNotes/CreateAuthorizationNotesAsync', data);
+  } 
 
   types = [    
     {text: 'Authorization', id: 'Authorization'},
     {text: 'Clinical', id: 'Clinical'},
     {text: 'Follow-Up', id: 'FollowUp'},
     {text: 'MD Review', id: 'MDReview'}
-  ];
-
-  getNotes(){
-      return this.notes;
-  }  
+  ];  
 
 }

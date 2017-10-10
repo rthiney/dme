@@ -1,7 +1,7 @@
 <!-- <sa-widget color="blueDark" [colorbutton]="false" [editbutton]="false" [deletebutton]="false" [custombutton]="false"> -->
     <p-dialog [(visible)]="showAuthNotesDialog" modal="true" resizable="false" height="600" width="1100" responsive="true">
         <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px;">
-          AUTH: <span class="center" >{{ds.requestApprovalData.authNumber}}</span> 
+          Authorization Notes: <span class="center" >{{ds.requestApprovalData.authNumber}}</span> 
         </p-header>       
         <app-notes></app-notes>                 
     </p-dialog>
@@ -202,7 +202,7 @@
               </div>
         
               <div class="row ">
-                <div class="pull-right">
+                <div class="pull-right" *ngIf="ds && ds.requestApprovalData && us.isUserInternal">
                   <a href="#" onClick="return false;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                 </div>
               </div>
@@ -289,14 +289,14 @@
                 </div>
               </div>
               <div class="row ">
-                <div class="pull-right">
+                <div class="pull-right" *ngIf="ds && ds.requestApprovalData && us.isUserInternal">
                   <a href="#" onClick="return false;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                 </div>
               </div>
             </div>
           </p-dialog>
         
-          <p-dialog [(visible)]="showReferralSourceDialog" modal="true" resizable="false" height="auto" width="700" responsive="true">
+ <!--          <p-dialog [(visible)]="showReferralSourceDialog" modal="true" resizable="false" height="auto" width="700" responsive="true">
             <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal;">
               <i class="fa fa-info-circle fg-primary"></i> Referral Source
             </p-header>
@@ -407,7 +407,7 @@
                 </div>
               </div>
             </div>
-          </p-dialog>
+          </p-dialog> -->
         
           <p-dialog [(visible)]="showOrderingPhysicianDialog" modal="true" resizable="false" height="auto" width="700" responsive="true">
             <p-header style="font-size: 20px; color: #1e5abc; font-weight: normal;">
@@ -516,7 +516,7 @@
                 </div>
               </div>
               <div class="row ">
-                <div class="pull-right">
+                <div class="pull-right" *ngIf="ds && ds.requestApprovalData && us.isUserInternal">
                   <a href="#" onClick="return false;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                 </div>
               </div>
@@ -630,7 +630,7 @@
                 </div>
               </div>
               <div class="row ">
-                <div class="pull-right">
+                <div class="pull-right" *ngIf="ds && ds.requestApprovalData && us.isUserInternal">
                   <a href="#" onClick="return false;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                 </div>
               </div>
@@ -646,12 +646,23 @@
               <div class="container-fluid">
                 <div class="row ">
                   <div class="container-fluid col-xs-12  pre-scrollable">
-                    <div style="margin-left: 4px;">
+
+
+                    <div style="margin-left: 4px; margin-bottom: 20px;" *ngIf="ds && ds.specialInstructionsData && ds.specialInstructionsData.length > 0; else other_specialInstructions">
                       {{ds.specialInstructionsData}}
                     </div>
+                    <ng-template #other_specialInstructions>
+                        <div style="margin-left: 4px; margin-bottom: 20px;">
+                            No special instructions found.
+                          </div>
+                    </ng-template>
+
+
+
+
                   </div>
                 </div>
-                <div class="row pull-right">
+                <div class="row pull-right" *ngIf="ds && ds.requestApprovalData && us.isUserInternal">
                   <div class="specialInstructionsPencilDiv">
                     <a href="#" onClick="return false;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                   </div>
@@ -679,8 +690,8 @@
         <div class="container-fluid">
           <p-splitButton label="Document" class="ui-button-secondary" [model]="items" styleClass="ui-button-secondary"></p-splitButton>
           <button pButton type="button" label="Cancel Request" class="ui-button-secondary" *ngIf="ds.selectedRecordType == 2"></button>
-          <button pButton type="button" label="Queue" class="ui-button-secondary" *ngIf="ds.selectedRecordType == 1"></button>
-          <button pButton type="button" label="Split Auth" class="ui-button-secondary" *ngIf="ds.selectedRecordType == 1"></button>
+          <button pButton type="button" label="Queue" class="ui-button-secondary" *ngIf="ds.selectedRecordType == 1 && us.isUserInternal"></button>
+          <button pButton type="button" label="Split Auth" class="ui-button-secondary" *ngIf="ds.selectedRecordType == 1 && us.isUserInternal"></button>
           <button pButton type="button" label="Member History" (click)="setShowMemberHistoryDialog()" class="ui-button-secondary"></button>
           <hr class="hrNoPadding" />
         </div>
@@ -690,11 +701,11 @@
           <ul class="nav nav-pills">
             <li><a (click)="setShowDemographicsDialog()">Demographics</a></li>
             <li><a (click)="setShowDiagnosisDialog()">Diagnosis</a></li>
-            <li><a (click)="setShowReferralSourceDialog()">Referral Source</a></li>
+<!--             <li><a (click)="setShowReferralSourceDialog()">Referral Source</a></li> -->
             <li><a (click)="setShowOrderingPhysicianDialog()">Ordering Physician</a></li>
             <li><a (click)="setShowDMEProviderDialog()">DME Provider</a></li>
             <li>
-              <a (click)="setShowSpecialInstructionsDialog()">Special Instructions<span *ngIf="specialInstructionsData.length > 0">&nbsp;*</span></a>
+              <a (click)="setShowSpecialInstructionsDialog()">Special Instructions<span *ngIf="ds && ds.specialInstructionsData && ds.specialInstructionsData.length > 0">&nbsp;*</span></a>
             </li>
           </ul>
         </div>
@@ -712,7 +723,7 @@
                     </ng-template>
                   </td>
                   <td>
-                    <span class="largeTextData-authDetails">{{ds.requestApprovalData.authNumber}}&nbsp;&nbsp; <a (click)="setShowAuthNotesDialog()" *ngIf="ds.selectedRecordType==1"><i class="fa fa-sticky-note-o" aria-hidden="true"></i></a></span>
+                    <span class="largeTextData-authDetails">{{ds.requestApprovalData.authNumber}}&nbsp;&nbsp; <a (click)="setShowAuthNotesDialog()" *ngIf="us.isUserInternal && ds.selectedRecordType > 0"><i class="fa fa-sticky-note-o" aria-hidden="true"></i></a></span>
                   </td>
                 </tr>
                 <tr>
@@ -720,7 +731,7 @@
                     <span class="label-authDetails">Start Date:</span>
                   </td>
                   <td>
-                    <span class="textData-authDetails">{{ds.requestApprovalData.startDate | date: 'MM/dd/yyyy H:mm a'}}</span>
+                    <span class="textData-authDetails">{{ds.requestApprovalData.startDate | date: 'MM/dd/yyyy h:mm a'}}</span>
 
                   </td>
                 </tr>
@@ -729,7 +740,7 @@
                     <span class="label-authDetails ">Creation Date:</span>
                   </td>
                   <td>
-                    <span class="textData-authDetails ">{{ds.requestApprovalData.creationDate | date: 'MM/dd/yyyy H:mm a'}}</span>
+                    <span class="textData-authDetails ">{{ds.requestApprovalData.creationDate | date: 'MM/dd/yyyy h:mm a'}}</span>
 
                   </td>
                 </tr>
@@ -777,14 +788,20 @@
                       </td>
                     </tr>
 
-                    <tr>
+                     <tr>
                       <td>
                         <span class="label-authDetails ">Referral Source:</span>
                       </td>
                       <td>
-                        <span class="textData-authDetails">{{ds.requestApprovalData.referralSource}}</span>
+                        <!-- <span class="textData-authDetails">{{ds.requestApprovalData.referralSource}}</span> -->
+                        <!-- mandatory dropdown, populate from lookup, find in DNA Api -->
+                        <input id="input" type="text" size="30" pInputText [(ngModel)]="ds.requestApprovalData.referralSource" name="referralSourceType">
+
+
+
+
                       </td>
-                    </tr>
+                    </tr> 
 
                     <tr>
                       <td colspan="2">
@@ -798,7 +815,7 @@
                   </table>
                 </div>
 
-                <div class="requestStatusEditIcon pull-right">
+                <div class="requestStatusEditIcon pull-right" *ngIf="ds && ds.requestApprovalData && us.isUserInternal">
                   <a href="#" onClick="return false;"><i class="fa fa-pencil align-baseline" aria-hidden="true"></i></a>
                 </div>
               </div>

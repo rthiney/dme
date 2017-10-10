@@ -5,6 +5,7 @@ import { DataTableModule, SharedModule, DialogModule, InputTextareaModule
 import { ILookupObject } from '@entities/interfaces/i-lookup-object';
 import { IAuthDetailsProductNote } from '@entities/interfaces/i-auth-details-product-note';
 import { DataService } from '@app/services/data.service';
+import { UserService } from '@app/shared/user/user.service';
 
 @Component({
     selector: 'member-details-widget',
@@ -17,9 +18,12 @@ export class MemberDetailsWidgetComponent implements OnInit {
     @Input() showVerticle: boolean = false;
     @Input() showOnRequest: boolean = false;
     public ds: DataService;
+    public us: UserService;
 
-    constructor(private dataService: DataService) {
+    constructor(private dataService: DataService, private userService: UserService) {
         this.ds = dataService;
+        this.us = userService;
+        this.us.setIsUserInternal();
      }
 
     ngOnInit(): void {

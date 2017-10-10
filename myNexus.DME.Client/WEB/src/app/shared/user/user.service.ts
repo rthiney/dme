@@ -23,6 +23,16 @@ export class UserService extends BaseHttpService {
      return this.get('RemoveUserSessionAsync?' + this.getUserSessionKeyParameter());
   }
 
+  isUserInternal: boolean;
+  
+  setIsUserInternal(): void {
+    this.get('IsCurrentUserInternal?' + this.getUserSessionKeyParameter())
+    .first()
+    .subscribe(
+      x => this.isUserInternal = x.result
+    );
+  }
+
   isCurrentUserInternal(): Observable<any> {
     return this.get('IsCurrentUserInternal?' + this.getUserSessionKeyParameter());
   }

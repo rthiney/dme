@@ -11,12 +11,12 @@ export class DiagnosisService extends BaseHttpService{
         super(environment.dnaBaseUrl, http, responseErrorHandler);
       }
     
-     public getDiagnosisList() {
+/*      public getDiagnosisList() {
         return this.http.get('shared/resources/data/countries.json')
                     .toPromise()
                     .then(res => <any[]> res.json().data)
                     .then(data => { return data; });
-    } 
+    }  */
 
     public getDiagnosisByContainsCodeOrDescription(icdCodeOrDescription: string) {
         let parameters = '?icdCodeOrDescription=' + encodeURIComponent('' + icdCodeOrDescription) + '&returnCount=10';

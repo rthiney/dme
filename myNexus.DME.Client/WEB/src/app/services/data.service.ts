@@ -81,13 +81,13 @@ export class DataService extends BaseHttpService {
           this.getAuthDetailData().subscribe((data) => {
             this.authDetailData = data.result;
             this.setAuthData();
-            console.log(this.authDetailData);
-            console.log(this.authDetailData.authorizationNumber);
+            //console.log(this.authDetailData);
+            //console.log(this.authDetailData.authorizationNumber);
           });
 
           this.getDmeProductGridAuthData().subscribe((data) => {
             this.dmeProductGridData = data.result;
-            console.log(this.dmeProductGridData);
+            //console.log(this.dmeProductGridData);
           });
           this.selectedRowRequest = null;
           break;
@@ -95,13 +95,13 @@ export class DataService extends BaseHttpService {
           this.getRequestDetailData().subscribe((data) => {
             this.requestDetailData = data.result;
             this.setRequestData();
-            console.log(this.authDetailData);
-            console.log(this.authDetailData.authorizationNumber);
+            //console.log(this.authDetailData);
+            //console.log(this.authDetailData.authorizationNumber);
           });
 
           this.getDmeProductGridRequestData().subscribe((data) => {
             this.dmeProductGridData = data.result;
-            console.log(this.dmeProductGridData);
+            //console.log(this.dmeProductGridData);
           });
           this.selectedRowAuth = null;
           break;
@@ -173,6 +173,10 @@ export class DataService extends BaseHttpService {
       }
     }
   }
+
+  public isExternalUser: boolean = true;
+  public isInternalUser: boolean = false;
+
 
 
 

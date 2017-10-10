@@ -6,6 +6,7 @@ import { DataTableModule, SharedModule, DialogModule, InputTextareaModule
     , MenuItem } from 'primeng/primeng';
 import { DmeProductsWidgetComponent } from './dme-products-widget.component';
 import { DataService } from '@app/services/data.service';
+import { UserService } from '@app/shared/user/user.service';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { DataService } from '@app/services/data.service';
   declarations: [
     DmeProductsWidgetComponent
   ],
-  providers: [DataService],
+  providers: [DataService, UserService],
   exports: [DmeProductsWidgetComponent]
 })
 export class DmeProductsWidgetModule { }

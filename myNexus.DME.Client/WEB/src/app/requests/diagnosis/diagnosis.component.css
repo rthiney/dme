@@ -284,25 +284,6 @@ option {
     z-index: 2147483640;
 }
 */
-.startTabMain{
-    margin: 5px;
-}
 
-.startTabMainLi{
 
-}
 
-.startDiv {
-    margin: 30px 150px 30px 50px; 
-
-}
-
-.demographicsDataText{
-    padding-bottom: 5px;
-}
-
-.demographicsTable{
-    border-collapse: separate;
-    border-spacing: 10px 0px;
-
-}

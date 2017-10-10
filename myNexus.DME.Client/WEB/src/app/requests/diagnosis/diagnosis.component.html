@@ -1,0 +1,114 @@
+<div class="form-group container-fluid diagnosisDiv">
+  <div class="row ">
+    <div class="container-fluid col-xs-12 ">
+      <div style="margin-left: 4px;" class="form-group">
+        <table class="diagnosisModalTable">
+          <tr>
+            <td>
+              <span>1st Diagnosis:</span>
+            </td>
+            <td style="z-index: 2000;">
+              <p-autoComplete [(ngModel)]="diag1" [suggestions]="filteredDiag1List" (completeMethod)="filterDiagnosisSingle($event, 1)" 
+                field="description" [size]="120" placeholder="Diagnosis" [minLength]="3" [ngModelOptions]="{standalone: true}" 
+                class="liTypeAheadStyle" (onSelect)="diag1Selected()">
+                  <ng-template let-d pTemplate="item"  class="ui-helper-clearfix" >
+                  <div class="ui-helper-clearfix" style="width: 300px !important;">
+                    <div class="ui-helper-clearfix liTypeAheadStyle" >{{d.description}}</div>																		
+                  </div>
+                </ng-template>																				
+              </p-autoComplete>
+
+            </td>
+            <td class="requiredFieldIndicatorFa"><i class="fa fa-asterisk"></i></td>
+          </tr>
+          <tr>
+            <td>
+              <span>2nd Diagnosis:</span>
+            </td>
+            <td style="z-index: 10;">
+              <p-autoComplete [(ngModel)]="diag2" [suggestions]="filteredDiag2List" (completeMethod)="filterDiagnosisSingle($event, 2)" field="description"
+               [size]="120" placeholder="Diagnosis" [minLength]="3" [ngModelOptions]="{standalone: true}" class="liTypeAheadStyle"
+               (onSelect)="diag2Selected()">
+                <ng-template let-d pTemplate="item" class="ui-helper-clearfix">
+                  <div class="ui-helper-clearfix" style="width: 300px !important;">
+                    <div class="ui-helper-clearfix liTypeAheadStyle">{{d.description}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <span>3rd Diagnosis:</span>
+            </td>
+            <td style="z-index: 500;">
+              <p-autoComplete [(ngModel)]="diag3" [suggestions]="filteredDiag3List" (completeMethod)="filterDiagnosisSingle($event, 3)" field="description"
+               [size]="120" placeholder="Diagnosis" [minLength]="3" [ngModelOptions]="{standalone: true}" class="liTypeAheadStyle" (onSelect)="diag3Selected()">
+                <ng-template let-d pTemplate="item" class="ui-helper-clearfix">
+                  <div class="ui-helper-clearfix" style="width: 300px !important;">
+                    <div class="ui-helper-clearfix liTypeAheadStyle">{{d.description}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <span>4th Diagnosis:</span>
+            </td>
+            <td>
+              <p-autoComplete [(ngModel)]="diag4" [suggestions]="filteredDiag4List" (completeMethod)="filterDiagnosisSingle($event, 4)" field="description"
+               [size]="120" placeholder="Diagnosis" [minLength]="3" [ngModelOptions]="{standalone: true}" class="liTypeAheadStyle" (onSelect)="diag4Selected()">
+                <ng-template let-d pTemplate="item" class="ui-helper-clearfix">
+                  <div class="ui-helper-clearfix" style="width: 300px !important;">
+                    <div class="ui-helper-clearfix liTypeAheadStyle">{{d.description}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <span>5th Diagnosis:</span>
+            </td>
+            <td>
+              <p-autoComplete [(ngModel)]="diag5" [suggestions]="filteredDiag5List" (completeMethod)="filterDiagnosisSingle($event, 5)" field="description"
+               [size]="120" placeholder="Diagnosis" [minLength]="3" [ngModelOptions]="{standalone: true}" class="liTypeAheadStyle" (onSelect)="diag5Selected()">
+                <ng-template let-d pTemplate="item" class="ui-helper-clearfix">
+                  <div class="ui-helper-clearfix" style="width: 300px !important;">
+                    <div class="ui-helper-clearfix liTypeAheadStyle">{{d.description}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <span>6th Diagnosis:</span>
+            </td>
+            <td>
+              <p-autoComplete [(ngModel)]="diag6" [suggestions]="filteredDiag6List" (completeMethod)="filterDiagnosisSingle($event, 6)" field="description"
+               [size]="120" placeholder="Diagnosis" [minLength]="3" name="diag6" id="diag6" class="liTypeAheadStyle" (onSelect)="diag6Selected()">
+                <ng-template let-d pTemplate="item" class="ui-helper-clearfix">
+                  <div class="ui-helper-clearfix" style="width: 300px !important;">
+                    <div class="ui-helper-clearfix liTypeAheadStyle">{{d.description}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+
+            </td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

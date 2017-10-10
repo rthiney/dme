@@ -65,7 +65,7 @@
                     <div class="details-child col-sm col-md col-lg-2 col-xl-2">
                         <!-- <label><strong>Member:</strong></label> -->
                         <span>{{member.FirstName}} {{member.LastName}}</span>
-                        <span *ngIf="ds.selectedRecordType == 1"><a (click)="setShowMemberDetailsNotesDialog()"><i class="fa fa-sticky-note-o" aria-hidden="true"></i></a></span>
+                        <span *ngIf="us.isUserInternal"><a (click)="setShowMemberDetailsNotesDialog()"><i class="fa fa-sticky-note-o" aria-hidden="true"></i></a></span>
                     </div>
                     <div class="details-child col-sm col-md col-lg-2 col-xl-2">
                         <label><strong>Plan:</strong></label>

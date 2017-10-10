@@ -309,7 +309,7 @@
               </p-column>
               <p-column field="authorizationDetailStatusName" header="Status"></p-column>
               <p-column field="pendingReasonName" header="Pending Reason"></p-column>
-              <p-column header="" [style]="{'width':'50px'}" *ngIf="ds.selectedRecordType == 1">
+              <p-column header="" [style]="{'width':'50px'}" *ngIf="us.isUserInternal">
                 <ng-template let-row="rowData" pTemplate="body">
                   <div class="row text-center">
                     <span class="text-center">

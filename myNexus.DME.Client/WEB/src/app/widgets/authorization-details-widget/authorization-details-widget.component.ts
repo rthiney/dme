@@ -6,7 +6,7 @@ import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { JsonApiService } from './../core/api/json-api.service';
 import { DatatableComponent } from './../shared/ui/datatable/datatable.component';
 import { DataTableModule, SharedModule, DialogModule, InputTextareaModule
-  , ButtonModule, DropdownModule, SplitButtonModule
+  , ButtonModule, DropdownModule, SplitButtonModule, InputTextModule
   , Menubar, MenuItem } from 'primeng/primeng';
 import { IAuthDetailsDmeProduct } from '@entities/interfaces/i-auth-details-dme-product';
 import { IAuthDetailsMemberHistory } from '@entities/interfaces/i-auth-details-member-history'; 
@@ -16,6 +16,7 @@ import { Subscription } from "rxjs/Rx";
 import { SmartadminModule } from './../../shared/smartadmin.module';
 import {NotesComponent} from './../notes/notes.component';
 import { DataService } from '@app/services/data.service';
+import { UserService } from '@app/shared/user/user.service';
 
 declare var $: any;
 
@@ -35,11 +36,13 @@ export class AuthorizationDetailsWidgetComponent implements OnInit {
   public viewType: number;
   public items: MenuItem[];
   public ds: DataService;
+  public us: UserService;
 
 
-
-public constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService) {
+public constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService, private userService: UserService) {
   this.ds = dataService;
+  this.us = userService;
+  this.us.setIsUserInternal();
  }
 
   ngOnInit(): void {

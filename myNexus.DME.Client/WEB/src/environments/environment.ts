@@ -7,5 +7,5 @@ export const environment = {
   production: false,
   loginBaseUrl: 'http://mynexussecuritydev.mynexuscare.com:90/account/login',
   dnaBaseUrl: 'http://localhost:62114/',
-  dmeBaseUrl: 'http://localhost:56386'
+  dmeBaseUrl: 'http://localhost:4200/'
 };

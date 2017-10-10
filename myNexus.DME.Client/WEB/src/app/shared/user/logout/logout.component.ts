@@ -17,6 +17,7 @@ declare var $: any;
         </span>
     </div>`
 })
+
 export class LogoutComponent {
   constructor(private notificationService: NotificationService, private userService: UserService) { }
 
@@ -24,7 +25,7 @@ export class LogoutComponent {
     event.preventDefault();
     this.notificationService.smartMessageBox({
       title: '<i class=\'fa fa-sign-out txt-color-orangeDark\'></i> Logout ?',
-      content: 'After logout you will be redirected to login page',
+      content: 'After logout you will be redirected to login page.',
       buttons: '[No][Yes]'
     },
       (ButtonPressed) => {

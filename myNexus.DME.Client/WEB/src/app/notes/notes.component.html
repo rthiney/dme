@@ -1,9 +1,11 @@
 <div class="container-fluid" >
+   
   <div class="row">
     <div class="col-lg-12">
       <div class="ui-widget-header" style="padding:0px 0px 8px 0; border:none;" > 
           <!-- <i class="fa fa-search" style="margin:4px 4px 4px 0"></i> -->
           <input #gb type="text" placeholder="Search" style="padding-left:4px;box-shadow: none; border:solid 1px #cccccc; color:black; font-weight:normal; border-radius:2px;" pInputText size="20" >
+          <span style="padding-left:20px;"><img *ngIf="showSpinner" src="/assets/img/loading_spinner.gif" alt="Smiley face" height="16px" width="16px"></span>
       </div> 
       <div >
           <p-dataTable  [value]="notes"
@@ -12,18 +14,23 @@
                         scrollHeight="200px"                                                  
                         styleClass="myTable"
                         #dt>    
-              <p-column field="CreatedDate" header="Creation Date" [style]="{'width':'20%'}"> 
+              <p-column field="noteDate" header="Creation Date" [style]="{'width':'20%'}"> 
                   <ng-template let-row="rowData" pTemplate="body">
-                      <span>{{row.CreatedDate | date: 'MM/dd/yyyy H:mm a'}}</span>
+                      <span>{{row.noteDate | date: 'MM/dd/yyyy H:mm a'}}</span>
                   </ng-template>              
               </p-column>
-              <p-column field="CreatedBy" header="Created By" [style]="{'width':'10%'}"   ></p-column>  
-              <p-column field="Type" header="Type" [style]="{'width':'10%'}"   ></p-column>
-              <p-column field="Note" header="Note" [style]="{'width':'55%'}" >
+              <p-column field="userFullName" header="Created By" [style]="{'width':'10%'}"   ></p-column>  
+              <p-column field="noteTypeID" header="Type" [style]="{'width':'15%'}"   >
+                  
+                  <ng-template let-row="rowData" pTemplate="body">
+                      <span>{{getNoteTypeNameById(row.noteTypeID)}}</span>
+                  </ng-template>  
+              </p-column>
+              <p-column field="note" header="Note" [style]="{'width':'55%'}" >
                   <ng-template let-row="rowData" pTemplate type="body">                
                     
-                    <div style="width:100%;" (mouseenter)="selectNote($event, row.Note, op)" (mouseout)="op.hide($event)" > 
-                        {{ (row.Note.length>20)? (row.Note | slice:0:80)+'...':(row.Note) }}
+                    <div style="width:100%;" (mouseenter)="selectNote($event, row.note, op)" (mouseout)="op.hide($event)" > 
+                        {{ (row.note.length>20)? (row.note | slice:0:80)+'...':(row.note) }}
                     </div>                                        
                   </ng-template>
               </p-column>                     
@@ -41,8 +48,8 @@
   <div class="row">
     <div class="col-lg-2">
       <div style="margin-top:40px; margin-bottom:8px;">         
-          <select [(ngModel)]="selectedType"  >
-            <option value="{{type.noteTypeId}}" *ngFor="let type of noteTypes">{{type.noteType}}</option>              
+          <select (change)="selectTypeID($event.target)">
+            <option [value]="type.noteTypeID"  *ngFor="let type of noteTypes">{{type.noteType}}</option>              
           </select>         
       </div>
     </div>
